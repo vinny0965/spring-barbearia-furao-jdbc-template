@@ -7,24 +7,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdministradorResource {
 	
+	@NotEmpty(message = "campo nome requerido")
 	@JsonProperty("nome")
 	private String nome;
 	
+	@NotEmpty(message = "campo cpf requerido")
 	@JsonProperty("cpf")
 	private String cpf;
 	
+	@NotEmpty(message = "campo login requerido")
 	@JsonProperty("login")
 	private String login;
 	
+	@NotEmpty(message = "campo senha requerido")
 	@JsonProperty("senha")
 	private String senha;
 	
+	@NotEmpty(message = "campo email requerido")
 	@JsonProperty("email")
 	private String email;
 	
+	@NotEmpty(message = "campo sexo requerido")
 	@JsonProperty("sexo")
 	private String sexo;
 	
+	@NotEmpty(message = "campo telfone requerido")
 	@JsonProperty("telefone")
 	private String telefone;
 	

@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import br.com.barbeariaFuraoJDBC.datasource.model.Endereco;
+import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
 
 @Repository
 public class EnderecoRepository {
@@ -31,14 +32,14 @@ public class EnderecoRepository {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public Endereco getById(int id){
+	public Endereco getById(int id) throws NotFoundException{
 		String sql = "select * from enderecos WHERE id= ?";
 		Endereco endereco = null;
 		try {
 			endereco = jdbcTemplate.queryForObject(sql, new Object[] {id},rowMapper);
 		}catch (DataAccessException e) {
 			// TODO: handle exception
-			
+			throw new NotFoundException("Não foi possível encontrar o endereco pelo id: "+id);
 		}
 		return endereco;
 	}

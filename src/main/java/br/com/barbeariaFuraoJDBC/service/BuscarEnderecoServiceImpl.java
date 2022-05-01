@@ -29,14 +29,11 @@ public class BuscarEnderecoServiceImpl {
 		return list;
 	}
 
-	public EnderecoResource buscarEnderecoPorId(int id) throws NotFoundException, ResourceExeption {
+	public EnderecoResource buscarEnderecoPorId(int id) throws ResourceExeption, NotFoundException {
 		Endereco enderecosById = enderecoRepository.getById(id);
-		if (enderecosById == null) {
-			throw new NotFoundException("Endereco não encontrado pelo id: " + id);
-		} else {
-			EnderecoResource conversor2 = conversor.conversor(enderecosById);
-			return conversor2;
-		}
+		EnderecoResource conversor2 = conversor.conversor(enderecosById);
+		return conversor2;
+		
 
 	}
 	
