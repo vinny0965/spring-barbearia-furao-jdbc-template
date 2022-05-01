@@ -28,10 +28,8 @@ public class AdministradorConversor {
 		try {
 			Administrador administrador = new Administrador();
 			LocalDate ceckDataNascimento = ceckDataNascimento(administradorResource.getDataNascimento());
-//			Optional<Endereco> findById = enderecoRepository.findById(checkIdEndereco);
 			if (buscarEnderecoPorId != null) {
-				Endereco endereco = new Endereco();
-				endereco.setId(checkIdEndereco);
+				Endereco endereco = buscarEnderecoPorId;
 				administrador.setEndereco(endereco);
 			}
 			administrador.setCpf(administradorResource.getCpf());
@@ -76,7 +74,6 @@ public class AdministradorConversor {
 		try {
 			Administrador administrador = new Administrador();
 			LocalDate ceckDataNascimento = (administradorResource.getDataNascimento());
-//			Optional<Endereco> findById = enderecoRepository.findById(checkIdEndereco);
 			
 			administrador.setEndereco(administradorResource.getEndereco());
 			administrador.setCpf(administradorResource.getCpf());

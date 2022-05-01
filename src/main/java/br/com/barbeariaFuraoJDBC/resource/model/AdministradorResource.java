@@ -1,7 +1,6 @@
 package br.com.barbeariaFuraoJDBC.resource.model;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,7 +10,7 @@ public class AdministradorResource {
 	@JsonProperty("nome")
 	private String nome;
 	
-	@NotEmpty(message = "campo cpf requerido")
+
 	@JsonProperty("cpf")
 	private String cpf;
 	
@@ -41,7 +40,7 @@ public class AdministradorResource {
 	
 	@NotEmpty(message = "campo id_endereco requerido")
 	@JsonProperty("id_endereco")
-	private String endereco;
+	private String id_endereco;
 
 	
 	public AdministradorResource() {
@@ -59,7 +58,7 @@ public class AdministradorResource {
 		this.sexo = sexo;
 		this.telefone = telefone;
 		this.dataNascimento = dataNascimento;
-		this.endereco = endereco;
+		this.id_endereco = endereco;
 	}
 
 	public String getNome() {
@@ -127,19 +126,13 @@ public class AdministradorResource {
 	}
 
 	public String getEndereco() {
-		return endereco;
+		return id_endereco;
 	}
 
 	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+		this.id_endereco = endereco;
 	}
 
-	@Override
-	public String toString() {
-		return "AdministradorResource [nome=" + nome + ", cpf=" + cpf + ", login=" + login + ", senha=" + senha
-				+ ", email=" + email + ", sexo=" + sexo + ", telefone=" + telefone + ", dataNascimento="
-				+ dataNascimento + ", endereco=" + endereco + "]";
-	}
 	
 	
 

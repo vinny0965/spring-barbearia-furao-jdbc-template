@@ -19,6 +19,7 @@ public class EnderecoRepository {
 
 	private RowMapper<Endereco> rowMapper = (rs,rowNum)->{
 		Endereco endereco = new Endereco();
+		endereco.setId(rs.getInt("id"));
 		endereco.setLogradouro(rs.getString("logradouro"));
 		endereco.setBairro(rs.getString("bairro"));
 		endereco.setNumero(rs.getInt("numero"));
