@@ -1,14 +1,18 @@
 package br.com.barbeariaFuraoJDBC.resource.model;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CupomDescontoResource {
 
 	private int id;
 	
+	@NotEmpty(message = "campo codigo requerido")
 	@JsonProperty("codigo")
 	private String codigo;
 	
+	@NotEmpty(message = "campo valor requerido")
 	@JsonProperty("valor")
 	private String valor;
 	

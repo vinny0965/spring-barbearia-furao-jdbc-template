@@ -2,6 +2,8 @@ package br.com.barbeariaFuraoJDBC.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -51,7 +53,7 @@ public class CupomController {
 //	}
 //	
 	@PostMapping(path = "/cupom/save")
-	public ResponseEntity<CupomDesconto> cadastrarCupom(@RequestBody CupomDescontoResource cupomDescontoResource,@RequestParam(value = "idAdministrador",defaultValue = "0")int idAdministrador) throws ResourceExeption, NotFoundException {
+	public ResponseEntity<CupomDesconto> cadastrarCupom(@Valid @RequestBody CupomDescontoResource cupomDescontoResource,@RequestParam(value = "idAdministrador",defaultValue = "0")int idAdministrador) throws ResourceExeption, NotFoundException {
 		return cadastrarCupomServiceImpl.cadastrarCupom(cupomDescontoResource,idAdministrador);
 	}
 	
