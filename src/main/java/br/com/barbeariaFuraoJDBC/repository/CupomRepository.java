@@ -59,7 +59,7 @@ public class CupomRepository {
 		String sql  = "select cd.id as cdid, codigo , valor , id_administrador , a.id as aid, a.cpf , a.data_nascimento ,"
 				+ " a.email ,a.login ,a.nome, a.senha ,a.sexo , a.telefone ,a.id_endereco, e.id as eid, e.bairro,e.cep ,"
 				+ "e.logradouro ,e.numero from cupons_desconto cd inner join administradores a on a.id = cd.id_administrador"
-				+ " inner join enderecos e on e.id  = a.id_endereco WHERE id=?";
+				+ " inner join enderecos e on e.id  = a.id_endereco WHERE cd.id=?";
 		CupomDesconto cupom = null;
 		try {
 			cupom= jdbcTemplate.queryForObject(sql, new Object[] {id}, rowMapper);
@@ -75,5 +75,16 @@ public class CupomRepository {
 		String sql = "insert into cupons_desconto (codigo,valor,id_administrador) values (?,?,?)";
 		return jdbcTemplate.update(sql,cupomDesconto.getCodigo(),cupomDesconto.getValor(),cupomDesconto.getAdministrador().getId());
 		
+	}
+	
+	public int updateById(CupomDesconto cupomDesconto, int id) {
+		String sql = "UPDATE cupons_desconto SET codigo=?, valor=?,id_administrador=? WHERE id=?";
+		return jdbcTemplate.update(sql,cupomDesconto.getCodigo(),cupomDesconto.getValor(),cupomDesconto.getAdministrador().getId(),id);
+
+	}
+	
+	public int deleteById(int id) {
+		String sql = "DELETE from cupons_desconto WHERE id=?";
+		return jdbcTemplate.update(sql,id);
 	}
 }
