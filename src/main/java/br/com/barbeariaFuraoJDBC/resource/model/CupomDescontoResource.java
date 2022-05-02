@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CupomDescontoResource {
 
+	private int id;
+	
 	@JsonProperty("codigo")
 	private String codigo;
 	
@@ -13,8 +15,9 @@ public class CupomDescontoResource {
 	@JsonProperty("id_administrador")
 	private String idAdministrador;
 
-	public CupomDescontoResource(String codigo, String valor, String idAdministrador) {
+	public CupomDescontoResource(int id,String codigo, String valor, String idAdministrador) {
 		super();
+		this.id = id;
 		this.codigo = codigo;
 		this.valor = valor;
 		this.idAdministrador = idAdministrador;
@@ -44,5 +47,10 @@ public class CupomDescontoResource {
 		this.idAdministrador = idAdministrador;
 	}
 
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 }

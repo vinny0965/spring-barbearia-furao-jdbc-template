@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "cupons_desconto")
 public class CupomDesconto implements Serializable{
@@ -19,6 +21,7 @@ public class CupomDesconto implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -8913408336265461648L;
+	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

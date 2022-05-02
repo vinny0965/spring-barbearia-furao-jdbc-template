@@ -1,35 +1,34 @@
-//package br.com.barbeariaFuraoJDBC.controller;
-//
-//import java.util.List;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.DeleteMapping;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.PutMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//import br.com.barbeariaFuraoJDBC.datasource.model.CupomDesconto;
-//import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
-//import br.com.barbeariaFuraoJDBC.exception.ResourceExeption;
-//import br.com.barbeariaFuraoJDBC.resource.model.CupomDescontoResource;
-//import br.com.barbeariaFuraoJDBC.service.BuscarCupomServiceImpl;
-//import br.com.barbeariaFuraoJDBC.service.CadastrarCupomServiceImpl;
-//
-//@RestController
-//@RequestMapping("/api")
-//public class CupomController {
-//	
+package br.com.barbeariaFuraoJDBC.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.barbeariaFuraoJDBC.datasource.model.CupomDesconto;
+import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
+import br.com.barbeariaFuraoJDBC.exception.ResourceExeption;
+import br.com.barbeariaFuraoJDBC.resource.model.CupomDescontoResource;
+import br.com.barbeariaFuraoJDBC.service.CadastrarCupomServiceImpl;
+
+@RestController
+@RequestMapping("/api")
+public class CupomController {
+	
 //	@Autowired
 //	private BuscarCupomServiceImpl buscarCupomServiceImpl;
-//	
-//	@Autowired
-//	private CadastrarCupomServiceImpl cadastrarCupomServiceImpl;
-//	
+	
+	@Autowired
+	private CadastrarCupomServiceImpl cadastrarCupomServiceImpl;
+	
 //	@GetMapping(path = "/cupons")
 //	public ResponseEntity<List<CupomDesconto>> listarCupons(){
 //		return  buscarCupomServiceImpl.listarCupons();
@@ -50,11 +49,11 @@
 //		return buscarCupomServiceImpl.deletarCupomPorId(id);
 //	}
 //	
-//	@PostMapping(path = "/cupom/save")
-//	public ResponseEntity<CupomDesconto> cadastrarCupom(@RequestBody CupomDescontoResource cupomDescontoResource) throws ResourceExeption {
-//		return cadastrarCupomServiceImpl.cadastrarCupom(cupomDescontoResource);
-//	}
-//	
-//	
-//	
-//}
+	@PostMapping(path = "/cupom/save")
+	public ResponseEntity<CupomDesconto> cadastrarCupom(@RequestBody CupomDescontoResource cupomDescontoResource) throws ResourceExeption, NotFoundException {
+		return cadastrarCupomServiceImpl.cadastrarCupom(cupomDescontoResource);
+	}
+	
+	
+	
+}
