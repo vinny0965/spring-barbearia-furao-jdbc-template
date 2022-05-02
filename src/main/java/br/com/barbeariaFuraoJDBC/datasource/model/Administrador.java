@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "administradores")
 public class Administrador implements Serializable{
@@ -24,6 +26,7 @@ public class Administrador implements Serializable{
 	 */
 	private static final long serialVersionUID = -518920826497204628L;
 	
+	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

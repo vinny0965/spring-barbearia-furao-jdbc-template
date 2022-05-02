@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.barbeariaFuraoJDBC.datasource.model.Administrador;
 import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
 import br.com.barbeariaFuraoJDBC.exception.ResourceExeption;
 import br.com.barbeariaFuraoJDBC.resource.model.AdministradorResource;
@@ -42,7 +43,7 @@ public class AdministradorController {
 	}
 	
 	@PostMapping(path = "/administrador/save")
-	public ResponseEntity<AdministradorResource> cadastrarAdministrador(@Valid @RequestBody AdministradorResource administradorResource) throws  ResourceExeption, NotFoundException {
+	public ResponseEntity<Administrador> cadastrarAdministrador(@Valid @RequestBody AdministradorResource administradorResource) throws  ResourceExeption, NotFoundException {
 		return cadastrarAdministradorServiceImpl.cadastrar(administradorResource);
 	}
 	

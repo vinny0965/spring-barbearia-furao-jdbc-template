@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ClienteResource {
 	
+	private int id;
+	
 	@JsonProperty("nome")
 	private String nome;
 	
@@ -100,6 +102,11 @@ public class ClienteResource {
 		this.idEndereco = idEndereco;
 	}
 	
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 
 }

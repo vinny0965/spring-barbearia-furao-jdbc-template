@@ -43,6 +43,7 @@ public class ClienteConversor {
 		try {
 			for (Cliente clienteCurrent : clienteResource) {
 				ClienteResource cliente = new ClienteResource();
+				cliente.setId(clienteCurrent.getId());
 				cliente.setNome(clienteCurrent.getNome());
 				cliente.setCpf(clienteCurrent.getCpf());
 				cliente.setDataNascimento(String.valueOf(clienteCurrent.getDataNascimento()));
@@ -62,6 +63,7 @@ public class ClienteConversor {
 		Endereco buscarEnderecoPorId = enderecoRepository.getById(clienteResource.getEndereco().getId());
 		try {
 			ClienteResource cliente = new ClienteResource();
+			cliente.setId(clienteResource.getId());
 			cliente.setNome(clienteResource.getNome());
 			cliente.setCpf(clienteResource.getCpf());
 			cliente.setDataNascimento(String.valueOf(clienteResource.getDataNascimento()));

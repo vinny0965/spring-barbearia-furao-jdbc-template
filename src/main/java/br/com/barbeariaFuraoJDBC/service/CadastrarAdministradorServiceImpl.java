@@ -21,13 +21,13 @@ public class CadastrarAdministradorServiceImpl {
 	@Autowired
 	private AdministradorRepository administradorRepository;
 	
-	public ResponseEntity<AdministradorResource> cadastrar(AdministradorResource administradorResource) throws ResourceExeption, NotFoundException{
+	public ResponseEntity<Administrador> cadastrar(AdministradorResource administradorResource) throws ResourceExeption, NotFoundException{
 		Administrador conversor = administradorConversor.conversor(administradorResource);
 		int create = administradorRepository.create(conversor);
 		if(create == 0) {
 			throw new ResourceExeption("não foi possível cadastrar o administrador, resource:"+administradorResource);
 		}else {
-			return new ResponseEntity<>(administradorResource, HttpStatus.CREATED);
+			return new ResponseEntity<>(conversor, HttpStatus.CREATED);
 		}
 	}
 }

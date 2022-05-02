@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.barbeariaFuraoJDBC.datasource.model.Cliente;
 import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
 import br.com.barbeariaFuraoJDBC.exception.ResourceExeption;
 import br.com.barbeariaFuraoJDBC.resource.model.ClienteResource;
@@ -51,7 +52,7 @@ public class ClienteController {
 	}
 	
 	@PostMapping(path = "/cliente/save")
-	public ResponseEntity<ClienteResource> cadastrarCliente(@RequestBody ClienteResource clienteResource) throws ResourceExeption, NotFoundException {
+	public ResponseEntity<Cliente> cadastrarCliente(@RequestBody ClienteResource clienteResource) throws ResourceExeption, NotFoundException {
 		return cadastrarClienteServiceImpl.cadastrar(clienteResource);
 	}
 	

@@ -2,9 +2,13 @@ package br.com.barbeariaFuraoJDBC.resource.model;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 public class EnderecoResource {
+	
+	private String id;
 	
 	@NotEmpty(message = "campo lograuro requerido")
 	@JsonProperty("logradouro")
@@ -53,6 +57,7 @@ public class EnderecoResource {
 		this.bairro = bairro;
 	}
 
+
 	public String getNumero() {
 		return numero;
 	}
@@ -73,6 +78,15 @@ public class EnderecoResource {
 	public String toString() {
 		return "EnderecoResource [logradouro=" + logradouro + ", bairro=" + bairro + ", numero=" + numero + ", cep="
 				+ cep + "]";
+	}
+	
+	
+	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

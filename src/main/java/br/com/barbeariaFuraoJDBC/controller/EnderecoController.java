@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.barbeariaFuraoJDBC.datasource.model.Endereco;
 import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
 import br.com.barbeariaFuraoJDBC.exception.ResourceExeption;
 import br.com.barbeariaFuraoJDBC.resource.model.EnderecoResource;
@@ -32,9 +33,8 @@ public class EnderecoController {
 	private BuscarEnderecoServiceImpl buscarEnderecoServiceImpl;
 	
 	@PostMapping(path = "/endereco/save")
-	public ResponseEntity<EnderecoResource> cadastrarEndereco(@Valid @RequestBody EnderecoResource enderecoResource) throws ResourceExeption {
-		cadastrarEnderecoServiceImpl.cadastrar(enderecoResource);
-		return new ResponseEntity<>(enderecoResource, HttpStatus.CREATED);
+	public ResponseEntity<Endereco> cadastrarEndereco(@Valid @RequestBody EnderecoResource enderecoResource) throws ResourceExeption {
+		return cadastrarEnderecoServiceImpl.cadastrar(enderecoResource);
 	}
 	
 	@GetMapping(path = "/enderecos")

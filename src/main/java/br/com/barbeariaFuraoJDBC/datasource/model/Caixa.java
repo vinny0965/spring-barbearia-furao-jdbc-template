@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "caixas")
 public class Caixa implements Serializable{
@@ -20,6 +22,7 @@ public class Caixa implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -6735288673219979651L;
+	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

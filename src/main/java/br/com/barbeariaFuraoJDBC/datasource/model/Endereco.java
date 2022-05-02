@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "enderecos")
@@ -22,6 +24,7 @@ public class Endereco implements Serializable{
 	private static final long serialVersionUID = 2650007363644065370L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonIgnore
 	private int id;
 	private String logradouro;
 

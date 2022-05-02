@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CaixaResource {
 	
+	private int id;
+	
 	@JsonProperty("nome")
 	private String nome;
 	
@@ -48,6 +50,13 @@ public class CaixaResource {
 		this.dataNascimento = dataNascimento;
 		this.idEndereco = idEndereco;
 	}
+
+	
+	public CaixaResource() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 
 	public String getNome() {
 		return nome;
@@ -129,6 +138,11 @@ public class CaixaResource {
 		this.idEndereco = idEndereco;
 	}
 	
-
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 }

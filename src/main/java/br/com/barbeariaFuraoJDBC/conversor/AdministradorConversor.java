@@ -52,6 +52,7 @@ public class AdministradorConversor {
 		try {
 			for (Administrador administrador : administradors) {
 				AdministradorResource administradorResource  = new AdministradorResource();
+				administradorResource.setId(administrador.getId());
 				administradorResource.setCpf(administrador.getCpf());
 				administradorResource.setDataNascimento(String.valueOf(administrador.getDataNascimento()));
 				administradorResource.setEmail(administrador.getEmail());
@@ -74,7 +75,7 @@ public class AdministradorConversor {
 		try {
 			AdministradorResource administrador = new AdministradorResource();
 			LocalDate ceckDataNascimento = (administradorResource.getDataNascimento());
-			
+			administrador.setId(administradorResource.getId());
 			administrador.setEndereco(String.valueOf(administradorResource.getEndereco().getId()));
 			administrador.setCpf(administradorResource.getCpf());
 			administrador.setDataNascimento(String.valueOf(ceckDataNascimento));
@@ -84,6 +85,7 @@ public class AdministradorConversor {
 			administrador.setSexo(administradorResource.getSexo());
 			administrador.setTelefone(administradorResource.getTelefone());
 			administrador.setNome(administradorResource.getNome());
+			
 			return administrador;
 		} catch (Exception e) {
 			throw new ResourceExeption(

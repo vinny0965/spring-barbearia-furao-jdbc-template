@@ -1,6 +1,7 @@
 package br.com.barbeariaFuraoJDBC.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +21,12 @@ public class CadastrarClienteServiceImpl {
 	@Autowired
 	private ClienteRepository clienteRepository;
 	
-	public ResponseEntity<ClienteResource> cadastrar(ClienteResource clienteResource) throws ResourceExeption, NotFoundException {
+	public ResponseEntity<Cliente> cadastrar(ClienteResource clienteResource) throws ResourceExeption, NotFoundException {
 		Cliente converter = clienteConversor.converter(clienteResource);
 		if(clienteRepository.Create(converter) == 0){
 			throw new ResourceExeption("não foi possível converter o resource para entidade, resource: "+clienteResource);
 		}
-		return ResponseEntity.ok(clienteResource);
+		return new ResponseEntity<>(converter,HttpStatus.CREATED);
 	}
 	
 

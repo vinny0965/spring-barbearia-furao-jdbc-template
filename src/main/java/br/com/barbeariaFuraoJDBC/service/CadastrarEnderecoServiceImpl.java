@@ -1,6 +1,8 @@
 package br.com.barbeariaFuraoJDBC.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.barbeariaFuraoJDBC.conversor.EnderecoConversor;
@@ -18,11 +20,13 @@ public class CadastrarEnderecoServiceImpl {
 	@Autowired
 	private EnderecoConversor enderecoConversor;
 	
-	public void cadastrar(EnderecoResource enderecoResource) throws ResourceExeption {
+	public ResponseEntity<Endereco> cadastrar(EnderecoResource enderecoResource) throws ResourceExeption {
 		Endereco conversor = enderecoConversor.conversor(enderecoResource);
 		int create = enderecoRepository.create(conversor);
 		if(create == 0) {
 			throw new ResourceExeption("não foi possível cadastrar o endereco, resource:"+enderecoResource);
+		}else {
+			return new ResponseEntity<>(conversor,HttpStatus.OK);
 		}
 	}
 
