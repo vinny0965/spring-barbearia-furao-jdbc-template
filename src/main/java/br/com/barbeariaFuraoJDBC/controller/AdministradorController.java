@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.barbeariaFuraoJDBC.datasource.model.Administrador;
 import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
 import br.com.barbeariaFuraoJDBC.exception.ResourceExeption;
 import br.com.barbeariaFuraoJDBC.resource.model.AdministradorResource;
@@ -38,7 +37,7 @@ public class AdministradorController {
 	}
 	
 	@GetMapping(path = "/administrador/id/{id}")
-	public Administrador buscarAdministradorPorId(@PathVariable(name = "id",required = true)int id) throws  NotFoundException, ResourceExeption {
+	public AdministradorResource buscarAdministradorPorId(@PathVariable(name = "id",required = true)int id) throws  NotFoundException, ResourceExeption {
 		return buscarAdministradorServiceImpl.buscarAdministradorPorId(id);
 	}
 	
@@ -46,16 +45,17 @@ public class AdministradorController {
 	public ResponseEntity<AdministradorResource> cadastrarAdministrador(@Valid @RequestBody AdministradorResource administradorResource) throws  ResourceExeption, NotFoundException {
 		return cadastrarAdministradorServiceImpl.cadastrar(administradorResource);
 	}
-//	
-//	@DeleteMapping(path = "/administrador/delete/id/{id}")
-//	public void deletarAdministrador(@PathVariable(name = "id",required = true)int id) throws NotFoundException {
-//		buscarAdministradorServiceImpl.deletarAdministrador(id);
-//	}
-//	
-//	@PutMapping(path = "/administrador/update/id/{id}")
-//	public void atualizarEndereco(@PathVariable(name = "id",required = true)int id, @RequestBody AdministradorResource administradorResource) throws ResourceExeption {
-//		buscarAdministradorServiceImpl.atualizarAdministrador(administradorResource, id);
-//	}
+	
+	@DeleteMapping(path = "/administrador/delete/id/{id}")
+	public ResponseEntity<Void> deletarAdministrador(@PathVariable(name = "id",required = true)int id) throws NotFoundException {
+		buscarAdministradorServiceImpl.deletarAdministrador(id);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@PutMapping(path = "/administrador/update/id/{id}")
+	public void atualizarEndereco(@PathVariable(name = "id",required = true)int id, @RequestBody AdministradorResource administradorResource) throws ResourceExeption, NotFoundException {
+		buscarAdministradorServiceImpl.atualizarAdministrador(administradorResource, id);
+	}
 	
 
 }

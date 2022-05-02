@@ -1,10 +1,8 @@
 package br.com.barbeariaFuraoJDBC.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.barbeariaFuraoJDBC.conversor.EnderecoConversor;
@@ -37,7 +35,6 @@ public class BuscarEnderecoServiceImpl {
 
 	}
 	
-
 
 	public void AtualizarEndereco(EnderecoResource enderecoResource, int id) throws ResourceExeption {
 		Endereco conversor2 = conversor.conversor(enderecoResource);

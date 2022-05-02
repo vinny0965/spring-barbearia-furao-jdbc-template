@@ -40,7 +40,7 @@ public class AdministradorResource {
 	
 	@NotEmpty(message = "campo id_endereco requerido")
 	@JsonProperty("id_endereco")
-	private String id_endereco;
+	private String endereco;
 
 	
 	public AdministradorResource() {
@@ -58,7 +58,7 @@ public class AdministradorResource {
 		this.sexo = sexo;
 		this.telefone = telefone;
 		this.dataNascimento = dataNascimento;
-		this.id_endereco = endereco;
+		this.endereco = endereco;
 	}
 
 	public String getNome() {
@@ -126,11 +126,11 @@ public class AdministradorResource {
 	}
 
 	public String getEndereco() {
-		return id_endereco;
+		return endereco;
 	}
 
 	public void setEndereco(String endereco) {
-		this.id_endereco = endereco;
+		this.endereco = endereco;
 	}
 
 	

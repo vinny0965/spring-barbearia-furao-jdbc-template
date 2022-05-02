@@ -38,7 +38,7 @@ public class AdministradorConversor {
 			administrador.setLogin(administradorResource.getLogin());
 			administrador.setSenha(administradorResource.getSenha());
 			administrador.setSexo(administradorResource.getSexo());
-			administrador.setTelefone(administradorResource.getSexo());
+			administrador.setTelefone(administradorResource.getTelefone());
 			administrador.setNome(administradorResource.getNome());
 			return administrador;
 		} catch (Exception e) {
@@ -69,20 +69,20 @@ public class AdministradorConversor {
 		return administradorResources;
 	}
 
-	public Administrador conversor(Administrador administradorResource)
+	public AdministradorResource conversor(Administrador administradorResource)
 			throws ResourceExeption, NotFoundException {
 		try {
-			Administrador administrador = new Administrador();
+			AdministradorResource administrador = new AdministradorResource();
 			LocalDate ceckDataNascimento = (administradorResource.getDataNascimento());
 			
-			administrador.setEndereco(administradorResource.getEndereco());
+			administrador.setEndereco(String.valueOf(administradorResource.getEndereco().getId()));
 			administrador.setCpf(administradorResource.getCpf());
-			administrador.setDataNascimento(ceckDataNascimento);
+			administrador.setDataNascimento(String.valueOf(ceckDataNascimento));
 			administrador.setEmail(administradorResource.getEmail());
 			administrador.setLogin(administradorResource.getLogin());
 			administrador.setSenha(administradorResource.getSenha());
 			administrador.setSexo(administradorResource.getSexo());
-			administrador.setTelefone(administradorResource.getSexo());
+			administrador.setTelefone(administradorResource.getTelefone());
 			administrador.setNome(administradorResource.getNome());
 			return administrador;
 		} catch (Exception e) {

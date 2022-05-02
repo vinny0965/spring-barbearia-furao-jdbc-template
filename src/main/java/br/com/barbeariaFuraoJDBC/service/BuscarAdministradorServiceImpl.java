@@ -25,23 +25,26 @@ public class BuscarAdministradorServiceImpl {
 		return administradorConversor.conversor(administradorRepository.list());
 	}
 	
-	public Administrador buscarAdministradorPorId(int id) throws  NotFoundException, ResourceExeption {
+	public AdministradorResource buscarAdministradorPorId(int id) throws  NotFoundException, ResourceExeption {
 		Administrador byId = administradorRepository.getById(id);
-		administradorConversor.conversor(byId);
-		return byId;
+		return administradorConversor.conversor(byId);
+		
 		
 	}
-//	
-//	public void deletarAdministrador(int id) throws NotFoundException {
-//		if(AdministradorDao.deleteById(id)==false) {
-//			throw new NotFoundException("não foi possível deletar, id inválido, id: "+id);
-//		}
-//	}
-//	
-//	public void atualizarAdministrador(AdministradorResource administradorResource, int id) throws ResourceExeption{
-//		if(AdministradorDao.updateById(administradorResource, id) == false) {
-//			throw new ResourceExeption("não foi possível converter o resouce para entidade, resource :"+administradorResource);
-//		}
-//	}
+	
+	public void deletarAdministrador(int id) throws NotFoundException {
+		if(administradorRepository.deleteById(id)==0) {
+			throw new NotFoundException("não foi possível deletar, id inválido, id: "+id);
+		}
+	}
+	
+	public void atualizarAdministrador(AdministradorResource administradorResource, int id) throws ResourceExeption, NotFoundException{
+		Administrador conversor = administradorConversor.conversor(administradorResource);
+		if(administradorRepository.UpdateById(conversor, id)==0) {
+			throw new NotFoundException("administrador não encontrado pelo id:" + id);
+		}
+	}
+
+
 	
 }

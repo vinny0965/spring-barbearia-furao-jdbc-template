@@ -55,7 +55,7 @@ public class AdministradorRepository {
 			administrador = jdbcTemplate.queryForObject(sql, new Object[] {id},rowMapper);
 		} catch (DataAccessException e) {
 			// TODO: handle exception
-			throw new NotFoundException("Não foi possível envontrar o administrador pelo id: "+id);
+			throw new NotFoundException("Não foi possível encontrar o administrador pelo id: "+id);
 		}
 		return administrador;
 	}
@@ -68,5 +68,20 @@ public class AdministradorRepository {
 				administrador.getSenha(),administrador.getSexo(),administrador.getTelefone(),administrador.getEndereco().getId());		
 	}
 	
+	public int UpdateById(Administrador administrador, int id) {
+		String sql = "UPDATE administradores SET cpf =?, data_nascimento=?, email=?, login=?,"
+				+ "nome=?,senha=?,sexo=?, telefone=?, id_endereco=?  WHERE id=?";
+		
+		return jdbcTemplate.update(sql, administrador.getCpf(),administrador.getDataNascimento(),
+				administrador.getEmail(),administrador.getLogin(),administrador.getNome(),
+				administrador.getSenha(),administrador.getSexo(),administrador.getTelefone(),
+				administrador.getEndereco().getId(),id);
+	}
+	
+	public int deleteById(int id) {
+		String sql = ("DELETE from administradores WHERE id=?");
+		return jdbcTemplate.update(sql,id);
+		
+	}
 	
 }

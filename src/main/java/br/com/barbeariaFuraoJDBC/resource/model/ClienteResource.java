@@ -25,6 +25,13 @@ public class ClienteResource {
 	@JsonProperty("id_endereco")
 	private String idEndereco;
 
+	
+	
+	public ClienteResource() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public ClienteResource(String nome, String cpf, String email, String sexo, String telefone, String dataNascimento,
 			String idEndereco) {
 		super();
