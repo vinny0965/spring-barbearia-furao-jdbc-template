@@ -65,6 +65,26 @@ public class ClienteRepository {
 		return cliente;
 	}
 	
+	public int UpdateById(Cliente cliente,int id) {
+		String sql = "UPDATE clientes SET cpf =?, data_nascimento=?, email=?,"
+				+ "nome=?,sexo=?, telefone=?, id_endereco=?  WHERE id=?";
+		return jdbcTemplate.update(sql,cliente.getCpf(),cliente.getDataNascimento(),
+				cliente.getEmail(),cliente.getNome(),cliente.getSexo(),cliente.getTelefone(),
+				cliente.getEndereco().getId(),id);
+	}
 	
+	public int deleteById(int id) {
+		String sql = ("DELETE from clientes WHERE id=?");
+		return jdbcTemplate.update(sql,id);
+	}
+	
+	public int Create(Cliente cliente) {
+		String sql = "INSERT INTO clientes (cpf, data_nascimento, email, "
+				+ "nome,sexo,telefone,id_endereco) VALUES(?,?,?,?,?,?,?)";
+		return jdbcTemplate.update(sql,cliente.getCpf(),cliente.getDataNascimento(),
+				cliente.getEmail(),cliente.getNome(),cliente.getSexo(),cliente.getTelefone(),
+				cliente.getEndereco().getId());
+	}
 
+	
 }

@@ -30,19 +30,18 @@ public class BuscarClienteServiceImpl {
 		Cliente byId = clienteRepository.getById(id);
 		return clienteConversor.conv(byId);
 	}
-//	
-//	public void atualizarCliente(ClienteResource clienteResource, int id) throws  ResourceExeption {
-//		if(ClienteDao.upadateById(clienteResource, id) == false) {
-//			throw new ResourceExeption("erro ao atualizar cliente, resource com dados inválidos");
-//		}
-//		
-//		
-//	}
-//	
-//	public void deletarCliente(int id) throws NotFoundException {
-//		if(ClienteDao.deletebyId(id) ==false) {
-//			throw new NotFoundException("não foi possível encontrar o cliente");
-//		}
-//	}
+	
+	public void atualizarCliente(ClienteResource clienteResource, int id) throws  ResourceExeption, NotFoundException {
+		Cliente converter = clienteConversor.converter(clienteResource);
+		if(clienteRepository.UpdateById(converter, id) == 0) {
+			throw new NotFoundException("erro ao atualizar cliente pelo id: "+id);
+		}
+	}
+	
+	public void deletarCliente(int id) throws NotFoundException {
+		if(clienteRepository.deleteById(id) ==0) {
+			throw new NotFoundException("não foi possível encontrar o cliente pelo id: "+id);
+		}
+	}
 	
 }
