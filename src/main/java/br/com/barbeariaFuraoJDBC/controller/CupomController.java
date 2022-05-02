@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.barbeariaFuraoJDBC.datasource.model.CupomDesconto;
@@ -50,10 +51,8 @@ public class CupomController {
 //	}
 //	
 	@PostMapping(path = "/cupom/save")
-	public ResponseEntity<CupomDesconto> cadastrarCupom(@RequestBody CupomDescontoResource cupomDescontoResource) throws ResourceExeption, NotFoundException {
-		return cadastrarCupomServiceImpl.cadastrarCupom(cupomDescontoResource);
+	public ResponseEntity<CupomDesconto> cadastrarCupom(@RequestBody CupomDescontoResource cupomDescontoResource,@RequestParam(value = "idAdministrador",defaultValue = "0")int idAdministrador) throws ResourceExeption, NotFoundException {
+		return cadastrarCupomServiceImpl.cadastrarCupom(cupomDescontoResource,idAdministrador);
 	}
-	
-	
 	
 }

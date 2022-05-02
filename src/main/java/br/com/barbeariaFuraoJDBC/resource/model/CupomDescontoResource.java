@@ -22,6 +22,13 @@ public class CupomDescontoResource {
 		this.valor = valor;
 		this.idAdministrador = idAdministrador;
 	}
+	
+
+	public CupomDescontoResource() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 
 	public String getCodigo() {
 		return codigo;

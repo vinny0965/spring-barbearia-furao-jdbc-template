@@ -19,8 +19,8 @@ public class CupomDescontoConversor {
 	@Autowired
 	private AdministradorRepository administradorRepository;
 	
-	public CupomDesconto conversor(CupomDescontoResource cupomDescontoResource) throws ResourceExeption, NotFoundException {
-		Administrador buscarAdministradorPorId = administradorRepository.getById(Integer.parseInt(cupomDescontoResource.getIdAdministrador()));
+	public CupomDesconto conversor(CupomDescontoResource cupomDescontoResource,int idAdministrador) throws ResourceExeption, NotFoundException {
+		Administrador buscarAdministradorPorId = administradorRepository.getById(idAdministrador);
 		try {
 			CupomDesconto cupomDesconto = new CupomDesconto();
 			cupomDesconto.setAdministrador(buscarAdministradorPorId);
