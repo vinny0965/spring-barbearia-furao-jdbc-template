@@ -34,12 +34,7 @@ public class EnderecoConversor {
 		List<EnderecoResource>enderecos = new ArrayList<>();
 		try {
 			for (Endereco end : endereco) {
-				EnderecoResource enderecoResource = new EnderecoResource();
-				enderecoResource.setId(String.valueOf(end.getId()));
-				enderecoResource.setBairro(end.getBairro());
-				enderecoResource.setCep(end.getCep());
-				enderecoResource.setLogradouro(end.getLogradouro());
-				enderecoResource.setNumero(String.valueOf(end.getNumero()));
+				EnderecoResource enderecoResource = new EnderecoResource(end);
 				enderecos.add(enderecoResource);
 			}
 		} catch (Exception e) {
@@ -51,12 +46,7 @@ public class EnderecoConversor {
 	
 	public EnderecoResource conversor(Endereco endereco) throws ResourceExeption {
 		try {
-			EnderecoResource enderecoResource = new EnderecoResource();
-			enderecoResource.setBairro(endereco.getBairro());
-			enderecoResource.setCep(endereco.getCep());
-			enderecoResource.setLogradouro(endereco.getLogradouro());
-			enderecoResource.setNumero(String.valueOf(endereco.getNumero()));
-			enderecoResource.setId(String.valueOf(endereco.getId()));
+			EnderecoResource enderecoResource = new EnderecoResource(endereco);
 			return enderecoResource;
 		} catch (Exception e) {
 			throw new ResourceExeption("não foi possível converter a entidade para o resouce, entidade: "+endereco);

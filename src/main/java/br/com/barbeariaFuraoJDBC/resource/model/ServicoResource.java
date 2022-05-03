@@ -1,12 +1,18 @@
 package br.com.barbeariaFuraoJDBC.resource.model;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import br.com.barbeariaFuraoJDBC.datasource.model.Servico;
 
 public class ServicoResource {
 	
+	@NotNull(message = "campo tipo_servico requerido")
 	@JsonProperty("tipo_servico")
 	private String tipoServico;
-	
+
+	@NotNull(message = "campo tipo_servico requerido")
 	@JsonProperty("valor")
 	private String valor;
 	
@@ -18,6 +24,13 @@ public class ServicoResource {
 		this.tipoServico = tipoServico;
 		this.valor = valor;
 		this.idAdministrador = idAdministrador;
+	}
+	
+	public ServicoResource(Servico servico) {
+		super();
+		this.tipoServico = servico.getTipoServico();
+		this.valor = String.valueOf(servico.getValor());
+		this.idAdministrador = String.valueOf(servico.getAdministrador().getId());
 	}
 
 	public String getTipoServico() {
@@ -36,13 +49,6 @@ public class ServicoResource {
 		this.valor = valor;
 	}
 
-	public String getIdAdministrador() {
-		return idAdministrador;
-	}
-
-	public void setIdAdministrador(String idAdministrador) {
-		this.idAdministrador = idAdministrador;
-	}
 	
 	
 

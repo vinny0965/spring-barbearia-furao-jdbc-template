@@ -2,9 +2,11 @@ package br.com.barbeariaFuraoJDBC.resource.model;
 
 import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
+import br.com.barbeariaFuraoJDBC.datasource.model.Endereco;
+
+
 
 public class EnderecoResource {
 	
@@ -39,6 +41,14 @@ public class EnderecoResource {
 		this.bairro = bairro;
 		this.numero = numero;
 		this.cep = cep;
+	}
+	public EnderecoResource(Endereco enderecoResource) {
+		super();
+		this.id = String.valueOf(enderecoResource.getId());
+		this.logradouro = enderecoResource.getLogradouro();
+		this.bairro = enderecoResource.getBairro();
+		this.numero = String.valueOf(enderecoResource.getNumero());
+		this.cep = enderecoResource.getCep();
 	}
 
 	public String getLogradouro() {
