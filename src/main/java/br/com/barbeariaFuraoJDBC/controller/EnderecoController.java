@@ -47,7 +47,7 @@ public class EnderecoController {
 	}
 	
 	@PutMapping(path = "/endereco/update/id/{id}")
-	public void  atualizarEndereco(@PathVariable(name = "id",required = true)int id,@Valid @RequestBody EnderecoResource enderecoResource) throws ResourceExeption {
+	public void  atualizarEndereco(@PathVariable(name = "id",required = true)int id, @RequestBody EnderecoResource enderecoResource) throws ResourceExeption {
 		 buscarEnderecoServiceImpl.AtualizarEndereco(enderecoResource, id);
 	}
 	

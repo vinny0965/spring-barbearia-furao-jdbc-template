@@ -47,6 +47,15 @@ public class ClienteRepository {
 		return jdbcTemplate.query(sql, rowMapper);
 	}
 	
+	public List<Cliente>listByEndereco(int id){
+		String sql = "select c.id as cid, cpf, data_nascimento, email, nome, sexo, "
+				+ "telefone, id_endereco, e.id as eid, e.bairro ,e.cep ,"
+				+ "e.logradouro,e.numero from clientes c  inner join enderecos"
+				+ " e on e.id = c.id_endereco WHERE e.id=?";
+		return jdbcTemplate.query(sql, rowMapper,id);
+		
+	}
+	
 	@SuppressWarnings("deprecation")
 	public Cliente getById(int id) throws NotFoundException {
 		String sql = "select c.id as cid, cpf, data_nascimento, email, nome, sexo,"

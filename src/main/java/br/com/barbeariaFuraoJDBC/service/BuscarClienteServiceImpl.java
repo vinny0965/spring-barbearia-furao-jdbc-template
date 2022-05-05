@@ -25,6 +25,10 @@ public class BuscarClienteServiceImpl {
 		List<ClienteResource> converter = clienteConversor.converter(clienteRepository.list());
 		return converter;
 	}
+	
+	public List<ClienteResource> listarClietesPorEndereco(int id) throws ResourceExeption, NotFoundException{
+		return clienteConversor.converter(clienteRepository.listByEndereco(id));
+	}
 
 	public ClienteResource buscarClientePorId(int id) throws NotFoundException, ResourceExeption {
 		Cliente byId = clienteRepository.getById(id);

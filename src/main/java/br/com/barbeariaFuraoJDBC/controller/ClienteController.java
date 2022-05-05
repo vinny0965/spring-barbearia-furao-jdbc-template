@@ -35,6 +35,10 @@ public class ClienteController {
 		return buscarClienteServiceImpl.listarClientes();
 	}
 	
+	@GetMapping(path = "/clientes/endereco/id/{id}")
+	public List<ClienteResource> listarClientesPorId(@PathVariable(value = "id")int id) throws ResourceExeption, NotFoundException{
+		return buscarClienteServiceImpl.listarClietesPorEndereco(id);
+	}
 	
 	@GetMapping(path = "/cliente/id/{id}")
 	public ClienteResource buscarClientePorId(@PathVariable(name = "id",required = true)int id) throws NotFoundException, ResourceExeption {
