@@ -64,6 +64,7 @@ public class AgendamentoConversor {
 		Servico byIdServico = servicoRepository.getById(agendamento.getServico().getId());
 		try {
 			AgendamentoResource agendamentoResource = new AgendamentoResource();
+			agendamentoResource.setId(String.valueOf(agendamento.getId()));
 			agendamentoResource.setDataAgendamento(String.valueOf(agendamento.getDataAgendamento()));
 			agendamentoResource.setHorario(String.valueOf(agendamento.getHorario()));
 			agendamentoResource.setFuncionario(agendamento.getFuncionario());

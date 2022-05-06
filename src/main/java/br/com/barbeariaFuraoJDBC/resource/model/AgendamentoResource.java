@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AgendamentoResource {
 	
+	private String id;
+	
 	@JsonProperty("data_agendamento")
 	private String dataAgendamento;
 	
@@ -76,6 +78,14 @@ public class AgendamentoResource {
 
 	public void setIdServico(String idServico) {
 		this.idServico = idServico;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	
