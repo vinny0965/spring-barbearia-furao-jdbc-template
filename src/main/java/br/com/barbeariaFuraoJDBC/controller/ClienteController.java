@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.barbeariaFuraoJDBC.datasource.model.Cliente;
@@ -35,8 +36,8 @@ public class ClienteController {
 		return buscarClienteServiceImpl.listarClientes();
 	}
 	
-	@GetMapping(path = "/clientes/endereco/id/{id}")
-	public List<ClienteResource> listarClientesPorId(@PathVariable(value = "id")int id) throws ResourceExeption, NotFoundException{
+	@GetMapping(path = "/cliente")
+	public List<ClienteResource> listarClientesPorId(@RequestParam(value = "endereco",defaultValue = "0")int id) throws ResourceExeption, NotFoundException{
 		return buscarClienteServiceImpl.listarClietesPorEndereco(id);
 	}
 	
