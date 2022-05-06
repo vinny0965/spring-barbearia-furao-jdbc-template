@@ -1,25 +1,32 @@
-//package br.com.barbeariaFuraoJDBC.service;
-//
-//import java.util.List;
-//
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.stereotype.Service;
-//
-//import br.com.barbeariaFuraoJDBC.datasource.model.Agendamento;
-//import br.com.barbeariaFuraoJDBC.datasource.model.dao.AgendamentoDao;
-//import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
-//import br.com.barbeariaFuraoJDBC.exception.ResourceExeption;
-//import br.com.barbeariaFuraoJDBC.resource.model.AgendamentoResource;
-//
-//@Service
-//public class BuscarAgendamentoServiceImpl {
-//	
-//	
-//	public List<Agendamento> listarAgendamentos(){
-//		return AgendamentoDao.getAll();
-//	}
-//	
+package br.com.barbeariaFuraoJDBC.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import br.com.barbeariaFuraoJDBC.conversor.AgendamentoConversor;
+import br.com.barbeariaFuraoJDBC.datasource.model.Agendamento;
+import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
+import br.com.barbeariaFuraoJDBC.exception.ResourceExeption;
+import br.com.barbeariaFuraoJDBC.repository.AgendamentoRepository;
+import br.com.barbeariaFuraoJDBC.resource.model.AgendamentoResource;
+
+@Service
+public class BuscarAgendamentoServiceImpl {
+	
+	@Autowired
+	private AgendamentoRepository agendamentoRepository;
+	
+	@Autowired
+	private AgendamentoConversor conversor;
+	
+	public List<AgendamentoResource> listarAgendamentos() throws ResourceExeption{
+		return conversor.conversor(agendamentoRepository.getAll());
+	}
+	
 //	public Agendamento buscarAgendamento(int id) throws NotFoundException {
 //		Agendamento byId = AgendamentoDao.getById(id);
 //		if(byId == null) {
@@ -46,5 +53,5 @@
 //			return ResponseEntity.noContent().build();
 //		}
 //	}
-//
-//}
+
+}
