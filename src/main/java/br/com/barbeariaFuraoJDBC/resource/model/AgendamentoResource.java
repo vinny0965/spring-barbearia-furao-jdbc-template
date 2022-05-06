@@ -2,6 +2,8 @@ package br.com.barbeariaFuraoJDBC.resource.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
+
 public class AgendamentoResource {
 	
 	@JsonProperty("data_agendamento")
@@ -18,6 +20,13 @@ public class AgendamentoResource {
 	
 	@JsonProperty("id_servico")
 	private String idServico;
+
+	
+	
+	public AgendamentoResource() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public AgendamentoResource(String dataAgendamento, String horario, String funcionario, String idCliente,
 			String idServico) {

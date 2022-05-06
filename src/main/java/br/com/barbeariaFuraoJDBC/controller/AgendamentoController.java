@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.barbeariaFuraoJDBC.datasource.model.Agendamento;
@@ -18,7 +19,7 @@ import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
 import br.com.barbeariaFuraoJDBC.exception.ResourceExeption;
 import br.com.barbeariaFuraoJDBC.resource.model.AgendamentoResource;
 import br.com.barbeariaFuraoJDBC.service.BuscarAgendamentoServiceImpl;
-//import br.com.barbeariaFuraoJDBC.service.CadastrarAgendamentoServiceImpl;
+import br.com.barbeariaFuraoJDBC.service.CadastrarAgendamentoServiceImpl;
 
 @RestController
 @RequestMapping("/api")
@@ -27,8 +28,8 @@ public class AgendamentoController {
 	@Autowired
 	private BuscarAgendamentoServiceImpl buscarAgendamentoServiceImpl;
 	
-//	@Autowired
-//	private CadastrarAgendamentoServiceImpl cadastrarAgendamentoServiceImpl;
+	@Autowired
+	private CadastrarAgendamentoServiceImpl cadastrarAgendamentoServiceImpl;
 	
 	@GetMapping(path = "/agendamentos")
 	public List<AgendamentoResource> listarAgendamentos() throws ResourceExeption{
@@ -40,11 +41,11 @@ public class AgendamentoController {
 //		return buscarAgendamentoServiceImpl.buscarAgendamento(id);
 //	}
 //	
-//	@PostMapping(path = "/agendamento/save")
-//	public ResponseEntity<AgendamentoResource> CadastrarAgendamento(@RequestBody AgendamentoResource agendamentoResource) throws ResourceExeption {
-//		return cadastrarAgendamentoServiceImpl.cadastrarAgendamento(agendamentoResource);
-//	}
-//	
+	@PostMapping(path = "/agendamento/save")
+	public ResponseEntity<Agendamento> CadastrarAgendamento(@RequestBody AgendamentoResource agendamentoResource,@RequestParam(value = "idCliente",defaultValue = "0")int idClinte,@RequestParam(value = "idServico",defaultValue = "0")int idServico) throws ResourceExeption, NotFoundException {
+		return cadastrarAgendamentoServiceImpl.cadastrarAgendamento(agendamentoResource,idClinte,idServico);
+	}
+	
 //	@PutMapping(path = "/agendamento/update/id/{id}")
 //	public ResponseEntity<Void> atualizarAgendamento(@PathVariable(name = "id",required = true)int id, @RequestBody AgendamentoResource agendamentoResource) throws ResourceExeption {
 //		return buscarAgendamentoServiceImpl.atualizarAgendamento(agendamentoResource, id);

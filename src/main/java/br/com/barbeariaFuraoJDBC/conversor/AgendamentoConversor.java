@@ -58,5 +58,22 @@ public class AgendamentoConversor {
 		return agendamentoResources;
 	}
 	
+	
+	public AgendamentoResource conversor(Agendamento agendamento) throws NotFoundException, ResourceExeption {
+		Cliente byIdCliente = clienteRepository.getById(agendamento.getCliente().getId());
+		Servico byIdServico = servicoRepository.getById(agendamento.getServico().getId());
+		try {
+			AgendamentoResource agendamentoResource = new AgendamentoResource();
+			agendamentoResource.setDataAgendamento(String.valueOf(agendamento.getDataAgendamento()));
+			agendamentoResource.setHorario(String.valueOf(agendamento.getHorario()));
+			agendamentoResource.setFuncionario(agendamento.getFuncionario());
+			agendamentoResource.setIdServico(String.valueOf(byIdServico.getId()));
+			agendamentoResource.setIdCliente(String.valueOf(byIdCliente));
+			return agendamentoResource;
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ResourceExeption("não foi possível converter o resouce para entidade");
+		}
+	}
 
 }

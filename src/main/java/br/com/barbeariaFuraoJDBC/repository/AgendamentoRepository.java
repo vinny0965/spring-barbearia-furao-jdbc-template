@@ -96,5 +96,11 @@ public class AgendamentoRepository {
 	}
 	
 	
-
+	public int create(Agendamento agendamento) {
+		String sql = "insert into agendamentos (data_agendamento,funcionario,horario, id_cliente, id_servico) values (?,?,?,?,?)";
+		return jdbcTemplate.update(sql,agendamento.getDataAgendamento(),agendamento.getFuncionario(),
+				agendamento.getHorario(),agendamento.getCliente().getId(),agendamento.getServico().getId());
+	}
+		
+	
 }
