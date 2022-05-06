@@ -46,7 +46,7 @@ public class AgendamentoConversor {
 		List<AgendamentoResource>agendamentoResources = new ArrayList<>();
 		try {
 			for (Agendamento agendamentoCurrent : agendamentos) {
-				AgendamentoResource agendamentoResource = new AgendamentoResource(
+				AgendamentoResource agendamentoResource = new AgendamentoResource(String.valueOf(agendamentoCurrent.getId()),
 						String.valueOf(agendamentoCurrent.getDataAgendamento()), String.valueOf(agendamentoCurrent.getHorario()),
 						agendamentoCurrent.getFuncionario(),String.valueOf(agendamentoCurrent.getCliente().getId()),
 						String.valueOf(agendamentoCurrent.getServico().getId()));

@@ -30,9 +30,10 @@ public class AgendamentoResource {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AgendamentoResource(String dataAgendamento, String horario, String funcionario, String idCliente,
+	public AgendamentoResource(String id,String dataAgendamento, String horario, String funcionario, String idCliente,
 			String idServico) {
 		super();
+		this.id = id;
 		this.dataAgendamento = dataAgendamento;
 		this.horario = horario;
 		this.funcionario = funcionario;
