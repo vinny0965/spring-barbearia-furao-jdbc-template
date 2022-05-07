@@ -26,13 +26,13 @@ public class BuscarClienteServiceImpl {
 		return converter;
 	}
 	
-	public List<ClienteResource> listarClietesPorEndereco(int id) throws ResourceExeption, NotFoundException{
-		return clienteConversor.converter(clienteRepository.listByEndereco(id));
+	public List<Cliente> listarClietesPorEndereco(int id) throws ResourceExeption, NotFoundException{
+		return clienteRepository.listByEndereco(id);
 	}
 
-	public ClienteResource buscarClientePorId(int id) throws NotFoundException, ResourceExeption {
+	public Cliente buscarClientePorId(int id) throws NotFoundException, ResourceExeption {
 		Cliente byId = clienteRepository.getById(id);
-		return clienteConversor.conv(byId);
+		return (byId);
 	}
 	
 	public void atualizarCliente(ClienteResource clienteResource, int id) throws  ResourceExeption, NotFoundException {
