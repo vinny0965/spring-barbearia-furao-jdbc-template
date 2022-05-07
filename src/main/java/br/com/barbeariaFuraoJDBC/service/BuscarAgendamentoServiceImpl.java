@@ -27,6 +27,10 @@ public class BuscarAgendamentoServiceImpl {
 		return conversor.conversor(agendamentoRepository.getAll());
 	}
 	
+	public List<AgendamentoResource> listarAgendamentosPorId(int id) throws ResourceExeption{
+		return conversor.conversor(agendamentoRepository.listByCliente(id));
+	}
+	
 //	public Agendamento buscarAgendamento(int id) throws NotFoundException {
 //		Agendamento byId = AgendamentoDao.getById(id);
 //		if(byId == null) {

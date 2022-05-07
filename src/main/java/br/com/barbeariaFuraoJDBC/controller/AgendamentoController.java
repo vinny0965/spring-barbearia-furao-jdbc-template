@@ -36,6 +36,11 @@ public class AgendamentoController {
 		return buscarAgendamentoServiceImpl.listarAgendamentos();
 	}
 	
+	@GetMapping(path = "/agendamento")
+	public List<AgendamentoResource> listarAgendamentosPorCliente(@RequestParam(value = "cliente",defaultValue = "0")int id) throws ResourceExeption{
+		return buscarAgendamentoServiceImpl.listarAgendamentosPorId(id);
+	}
+	
 //	@GetMapping(path = "/agendamento/id/{id}")
 //	public Agendamento buscarAgendamentoPorId(@PathVariable(name = "id",required = true)int id) throws NotFoundException {
 //		return buscarAgendamentoServiceImpl.buscarAgendamento(id);
