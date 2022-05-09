@@ -51,16 +51,14 @@ public class ClienteController {
 		buscarClienteServiceImpl.deletarCliente(id);
 	}
 	
-	@PutMapping(path = "/cliente/update/id/{id}")
-	public void atualizarClientePorId(@PathVariable(name = "id",required = true)int id, @RequestBody ClienteResource clienteResource) throws ResourceExeption, NotFoundException {
-		buscarClienteServiceImpl.atualizarCliente(clienteResource, id);
-	}
+//	@PutMapping(path = "/cliente/update/id/{id}")
+//	public void atualizarClientePorId(@PathVariable(name = "id",required = true)int id, @RequestBody ClienteResource clienteResource) throws ResourceExeption, NotFoundException {
+//		buscarClienteServiceImpl.atualizarCliente(clienteResource, id);
+//	}
 	
 	@PostMapping(path = "/cliente/save")
-	public ResponseEntity<Cliente> cadastrarCliente(@RequestBody ClienteResource clienteResource) throws ResourceExeption, NotFoundException {
-		return cadastrarClienteServiceImpl.cadastrar(clienteResource);
+	public ResponseEntity<Cliente> cadastrarCliente(@RequestBody ClienteResource clienteResource,@RequestParam(value = "idEndereco",defaultValue = "0")int id) throws ResourceExeption, NotFoundException {
+		return cadastrarClienteServiceImpl.cadastrar(clienteResource,id);
 	}
-	
-
 
 }

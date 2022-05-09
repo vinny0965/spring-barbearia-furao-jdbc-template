@@ -20,8 +20,8 @@ public class ClienteConversor {
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 
-	public Cliente converter(ClienteResource clienteResource) throws ResourceExeption, NotFoundException {
-		Endereco buscarEnderecoPorId = enderecoRepository.getById(Integer.parseInt(clienteResource.getIdEndereco()));
+	public Cliente converter(ClienteResource clienteResource, int id) throws ResourceExeption, NotFoundException {
+		Endereco buscarEnderecoPorId = enderecoRepository.getById(id);
 		try {
 			Cliente cliente = new Cliente();
 			cliente.setNome(clienteResource.getNome());

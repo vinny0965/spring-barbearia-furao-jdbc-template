@@ -21,8 +21,8 @@ public class CadastrarClienteServiceImpl {
 	@Autowired
 	private ClienteRepository clienteRepository;
 	
-	public ResponseEntity<Cliente> cadastrar(ClienteResource clienteResource) throws ResourceExeption, NotFoundException {
-		Cliente converter = clienteConversor.converter(clienteResource);
+	public ResponseEntity<Cliente> cadastrar(ClienteResource clienteResource, int id) throws ResourceExeption, NotFoundException {
+		Cliente converter = clienteConversor.converter(clienteResource,id);
 		if(clienteRepository.Create(converter) == 0){
 			throw new ResourceExeption("não foi possível converter o resource para entidade, resource: "+clienteResource);
 		}

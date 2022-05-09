@@ -35,8 +35,8 @@ public class BuscarClienteServiceImpl {
 		return (byId);
 	}
 	
-	public void atualizarCliente(ClienteResource clienteResource, int id) throws  ResourceExeption, NotFoundException {
-		Cliente converter = clienteConversor.converter(clienteResource);
+	public void atualizarCliente(ClienteResource clienteResource, int idEnd, int id) throws  ResourceExeption, NotFoundException {
+		Cliente converter = clienteConversor.converter(clienteResource, idEnd);
 		if(clienteRepository.UpdateById(converter, id) == 0) {
 			throw new NotFoundException("erro ao atualizar cliente pelo id: "+id);
 		}
