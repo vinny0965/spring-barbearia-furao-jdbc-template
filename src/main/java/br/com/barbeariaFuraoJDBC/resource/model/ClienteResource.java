@@ -21,7 +21,7 @@ public class ClienteResource {
 	@JsonProperty("telefone")
 	private String telefone;
 	
-	@JsonProperty("data_nascimento")
+	@JsonProperty("dataNascimento")
 	private String dataNascimento;
 	
 	@JsonProperty("id_endereco")
