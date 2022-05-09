@@ -8,6 +8,8 @@ import br.com.barbeariaFuraoJDBC.datasource.model.Servico;
 
 public class ServicoResource {
 	
+	private int id;
+	
 	@NotNull(message = "campo tipo_servico requerido")
 	@JsonProperty("tipo_servico")
 	private String tipoServico;
@@ -28,6 +30,7 @@ public class ServicoResource {
 	
 	public ServicoResource(Servico servico) {
 		super();
+		this.id = servico.getId();
 		this.tipoServico = servico.getTipoServico();
 		this.valor = String.valueOf(servico.getValor());
 		this.idAdministrador = String.valueOf(servico.getAdministrador().getId());
@@ -50,6 +53,13 @@ public class ServicoResource {
 	}
 
 	
+	public int getId() {
+		return id;
+	}
 	
+	private void set() {
+		// TODO Auto-generated method stub
+
+	}
 
 }
