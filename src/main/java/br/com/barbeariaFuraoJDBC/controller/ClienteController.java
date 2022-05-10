@@ -46,6 +46,11 @@ public class ClienteController {
 		return buscarClienteServiceImpl.buscarClientePorId(id);
 	}
 	
+	@GetMapping(path = "/cliente/cpf/{cpf}")
+	public Cliente buscarClientePorCpf(@PathVariable(name = "cpf",required = true)String cpf) throws NotFoundException, ResourceExeption {
+		return buscarClienteServiceImpl.buscarClientePorCpf(cpf);
+	}
+	
 	@DeleteMapping(path = "/cliente/delete/id/{id}")
 	public void deletarClientePorId(@PathVariable(name = "id",required = true)int id) throws NotFoundException {
 		buscarClienteServiceImpl.deletarCliente(id);

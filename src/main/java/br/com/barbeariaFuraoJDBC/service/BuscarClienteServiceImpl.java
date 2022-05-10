@@ -35,6 +35,11 @@ public class BuscarClienteServiceImpl {
 		return (byId);
 	}
 	
+	public Cliente buscarClientePorCpf(String cpf) throws NotFoundException, ResourceExeption {
+		Cliente byId = clienteRepository.getByCpf(cpf);
+		return (byId);
+	}
+	
 	public void atualizarCliente(ClienteResource clienteResource, int idEnd, int id) throws  ResourceExeption, NotFoundException {
 		Cliente converter = clienteConversor.converter(clienteResource, idEnd);
 		if(clienteRepository.UpdateById(converter, id) == 0) {

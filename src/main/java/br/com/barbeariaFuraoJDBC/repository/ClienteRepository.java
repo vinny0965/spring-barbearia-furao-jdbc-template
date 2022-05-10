@@ -56,6 +56,8 @@ public class ClienteRepository {
 		
 	}
 	
+	
+	
 	@SuppressWarnings("deprecation")
 	public Cliente getById(int id) throws NotFoundException {
 		String sql = "select c.id as cid, cpf, data_nascimento, email, nome, sexo,"
@@ -70,6 +72,23 @@ public class ClienteRepository {
 		} catch (DataAccessException e) {
 			// TODO: handle exception
 			throw new NotFoundException("Não foi possível encontrar o cliente pelo id: "+id);
+		}
+		return cliente;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public Cliente getByCpf(String cpf) throws NotFoundException {
+		String sql = "select c.id as cid, cpf, data_nascimento, email, nome, sexo,"
+				+ " telefone, id_endereco, e.id as eid, e.bairro ,e.cep ,"
+				+ "e.logradouro,e.numero from clientes c  inner join enderecos e"
+				+ " on e.id = c.id_endereco WHERE cpf=?";
+		Cliente cliente = null;
+		
+		try {
+			cliente = jdbcTemplate.queryForObject(sql, new Object[] {cpf},rowMapper);
+			
+		} catch (DataAccessException e) {
+			// TODO: handle exception
 		}
 		return cliente;
 	}
