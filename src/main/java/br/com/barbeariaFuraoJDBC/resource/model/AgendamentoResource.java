@@ -88,6 +88,12 @@ public class AgendamentoResource {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "AgendamentoResource [id=" + id + ", dataAgendamento=" + dataAgendamento + ", horario=" + horario
+				+ ", funcionario=" + funcionario + ", idCliente=" + idCliente + ", idServico=" + idServico + "]";
+	}
 	
 	
 	

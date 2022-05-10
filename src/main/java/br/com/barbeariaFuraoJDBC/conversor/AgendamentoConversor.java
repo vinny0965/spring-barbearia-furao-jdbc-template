@@ -38,7 +38,7 @@ public class AgendamentoConversor {
 			agendamento.setCliente(buscarClientePorId);
 			return agendamento;
 		} catch (Exception e) {
-			throw new ResourceExeption("não foi possível converter o resouce para entidade, resouce: "+agendamentoResource);
+			throw new ResourceExeption("não foi  o resouce para entidade, resouce: "+agendamentoResource);
 		}
 	}
 	
