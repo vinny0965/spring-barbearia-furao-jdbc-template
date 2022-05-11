@@ -30,6 +30,7 @@ public class Produto implements Serializable{
 	private String codigoBarras;
 	private String descricao;
 	private LocalDate validade;
+	private double valor;
 	
 	
 	@OneToMany(mappedBy = "produto")
@@ -42,11 +43,12 @@ public class Produto implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Produto(String codigoBarras, String descricao, LocalDate validade) {
+	public Produto(String codigoBarras, String descricao, LocalDate validade, double valor) {
 		super();
 		this.codigoBarras = codigoBarras;
 		this.descricao = descricao;
 		this.validade = validade;
+		this.valor = valor;
 	}
 
 	public int getId() {
@@ -79,6 +81,14 @@ public class Produto implements Serializable{
 
 	public void setValidade(LocalDate validade) {
 		this.validade = validade;
+	}
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
 	
 	
