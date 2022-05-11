@@ -88,6 +88,8 @@ public class ClienteRepository {
 			cliente = jdbcTemplate.queryForObject(sql, new Object[] {cpf},rowMapper);
 			
 		} catch (DataAccessException e) {
+			throw new NotFoundException("Não foi possível encontrar o cliente pelo cpf: "+cpf);
+
 			// TODO: handle exception
 		}
 		return cliente;
