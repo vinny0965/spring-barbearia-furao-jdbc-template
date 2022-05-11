@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import br.com.barbeariaFuraoJDBC.datasource.model.Administrador;
 import br.com.barbeariaFuraoJDBC.datasource.model.Endereco;
 import br.com.barbeariaFuraoJDBC.datasource.model.Servico;
+import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
 
 @Repository
 public class ServicoRepository {
@@ -53,7 +54,7 @@ public class ServicoRepository {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public Servico getById(int id) {
+	public Servico getById(int id) throws NotFoundException {
 		String sql = "select s.id as sid, tipo_servico , valor ,id_administrador, a.id as aid, a.cpf ,"
 				+ " a.data_nascimento , a.email , a.login , a.nome , a.senha , a.sexo , a.telefone , a.id_endereco,"
 				+ " e.id as eid,e.bairro,e.cep,e.logradouro ,e.numero from servicos s inner join administradores"
@@ -63,6 +64,24 @@ public class ServicoRepository {
 			servico = jdbcTemplate.queryForObject(sql, new Object[] {id},rowMapper);
 		} catch (DataAccessException e) {
 			// TODO: handle exception
+			throw new NotFoundException("não foi possível encontrar o serviço pelo id: "+id);
+		}
+		return servico;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public Servico getByTipo(String tipo) throws NotFoundException {
+		String sql = "select s.id as sid, tipo_servico , valor ,id_administrador, a.id as aid, a.cpf ,"
+				+ " a.data_nascimento , a.email , a.login , a.nome , a.senha , a.sexo , a.telefone , a.id_endereco,"
+				+ " e.id as eid,e.bairro,e.cep,e.logradouro ,e.numero from servicos s inner join administradores"
+				+ " a on a.id = s.id_administrador inner join enderecos e on e.id = a.id_endereco WHERE tipo_servico=?";
+		Servico servico = null;
+		try {
+			servico = jdbcTemplate.queryForObject(sql, new Object[] {tipo},rowMapper);
+		} catch (DataAccessException e) {
+			// TODO: handle exception
+			throw new NotFoundException("não foi possível encontrar o serviço pelo nome: "+tipo);
+
 		}
 		return servico;
 	}

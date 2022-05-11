@@ -34,6 +34,15 @@ public class BuscarServicoServiceImpl {
 		return servicoConversor.conversor(byId);
 	}
 	
+	public ServicoResource buscarServicoPorTipo(String tipo) throws NotFoundException, ResourceExeption {
+		Servico byId = servicoRepository.getByTipo(tipo);
+		if(byId == null) {
+			throw new NotFoundException("serviço não encontrar pelo nome: "+tipo);
+		}
+		return servicoConversor.conversor(byId);
+	}
+	
+	
 	public void deletarServico(int id) throws NotFoundException {
 		if(servicoRepository.deleteById(id)==0) {
 			throw new NotFoundException("não foi possível deletar o serviço");

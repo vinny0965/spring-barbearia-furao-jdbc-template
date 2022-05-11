@@ -44,6 +44,11 @@ public class ServicoController {
 		return buscarServicoServiceImpl.buscarServicoPorId(id);
 	}
 	
+	@GetMapping(path = "/servico/nome/{nome}")
+	public ServicoResource busServicoPorTipo(@PathVariable(name = "nome",required = true)String tipo) throws NotFoundException, ResourceExeption {
+		return buscarServicoServiceImpl.buscarServicoPorTipo(tipo);
+	}
+	
 	@DeleteMapping(path = "/servico/delete/id/{id}")
 	public void deletarServico(@PathVariable(name = "id",required = true)int id) throws NotFoundException {
 		buscarServicoServiceImpl.deletarServico(id);
