@@ -39,6 +39,11 @@ public class ServicoController {
 		return buscarServicoServiceImpl.listarServicos();
 	}
 	
+	@GetMapping(path = "/servico")
+	public List<ServicoResource> listarServicosPorAdm(@RequestParam(value = "idAdm",defaultValue = "0")int idAdm) throws ResourceExeption{
+		return buscarServicoServiceImpl.listarServicosPorAdm(idAdm);
+	}
+	
 	@GetMapping(path = "/servico/id/{id}")
 	public ServicoResource busServico(@PathVariable(name = "id",required = true)int id) throws NotFoundException, ResourceExeption {
 		return buscarServicoServiceImpl.buscarServicoPorId(id);

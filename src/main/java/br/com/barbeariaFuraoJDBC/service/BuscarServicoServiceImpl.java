@@ -26,6 +26,11 @@ public class BuscarServicoServiceImpl {
 		
 	}
 	
+	
+	public List<ServicoResource> listarServicosPorAdm(int idAdm) throws ResourceExeption{
+		return servicoConversor.conversor(servicoRepository.listByAdministrador(idAdm));
+		
+	}
 	public ServicoResource buscarServicoPorId(int id) throws NotFoundException, ResourceExeption {
 		Servico byId = servicoRepository.getById(id);
 		if(byId == null) {

@@ -12,6 +12,7 @@ import br.com.barbeariaFuraoJDBC.datasource.model.Agendamento;
 import br.com.barbeariaFuraoJDBC.datasource.model.Cliente;
 import br.com.barbeariaFuraoJDBC.datasource.model.Endereco;
 import br.com.barbeariaFuraoJDBC.datasource.model.Servico;
+import br.com.barbeariaFuraoJDBC.exception.NotFoundException;
 
 @Repository
 public class AgendamentoRepository {
@@ -95,7 +96,7 @@ public class AgendamentoRepository {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public Agendamento findById(int id) {
+	public Agendamento findById(int id) throws NotFoundException {
 		String sql = "select a.id as aid, data_agendamento ,funcionario , horario , id_cliente , id_servico, c.id as cid, c.cpf as ccpf , c.data_nascimento as cdatans , c.email as cemail ,c.nome as cnome ,c.sexo csexo , c.telefone as ctelefone, c.id_endereco as cendereco,\r\n"
 				+ "e.id as eid, e.bairro as ebairro, e.cep as ecep ,e.logradouro as elog ,e.numero as enumero , s.id as sid, s.tipo_servico ,s.valor ,s.id_administrador, ad.id as adid, ad.cpf as adcpf , ad.data_nascimento as adnasc , ad.email as ademail , ad.login as adlogin,\r\n"
 				+ "ad.nome as adnome , ad.senha as adsenha , ad.sexo  as adsexo, ad.telefone as adtelefone, ad.id_endereco as adendereco, ead.id as eadid, ead.bairro as eadbairro, ead.cep as edadcep, ead.logradouro as edadlog , ead.numero as edadnumero\r\n"
@@ -104,7 +105,14 @@ public class AgendamentoRepository {
 				+ "inner join servicos s on s.id = a.id_servico \r\n"
 				+ "inner join administradores ad on ad.id = s.id_administrador\r\n"
 				+ "inner join enderecos ead on ead.id  = ad.id_endereco WHERE a.id=?";
-		return jdbcTemplate.queryForObject(sql, new Object[] {},rowMapper);
+		Agendamento agendamento = null;
+		try {
+			agendamento = jdbcTemplate.queryForObject(sql, new Object[] {id},rowMapper);
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new NotFoundException("não foi possível encontrar o agendamento pelo id: "+id);
+		}
+		return agendamento;
 	}
 	
 	

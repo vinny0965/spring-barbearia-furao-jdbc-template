@@ -24,9 +24,6 @@ public class FluxoCaixa implements Serializable{
 	private String formaPagamento;
 	private Double totalPagamento;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_caixa",nullable = false)
-	private Caixa caixa;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_agendamento",nullable = false)
@@ -41,11 +38,10 @@ public class FluxoCaixa implements Serializable{
 		
 	}
 	
-	public FluxoCaixa(String formaPagamento, Double totalPagamento, Caixa caixa, Agendamento agendamento,
+	public FluxoCaixa(String formaPagamento, Double totalPagamento, Agendamento agendamento,
 			CupomDesconto cupomDesconto) {
 		this.formaPagamento = formaPagamento;
 		this.totalPagamento = totalPagamento;
-		this.caixa = caixa;
 		this.agendamento = agendamento;
 		this.cupomDesconto = cupomDesconto;
 	}
@@ -66,13 +62,7 @@ public class FluxoCaixa implements Serializable{
 		this.totalPagamento = totalPagamento;
 	}
 
-	public Caixa getCaixa() {
-		return caixa;
-	}
 
-	public void setCaixa(Caixa caixa) {
-		this.caixa = caixa;
-	}
 
 	public Agendamento getAgendamento() {
 		return agendamento;

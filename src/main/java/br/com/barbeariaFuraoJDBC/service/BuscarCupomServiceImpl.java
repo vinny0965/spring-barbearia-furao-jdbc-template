@@ -27,6 +27,11 @@ public class BuscarCupomServiceImpl {
 		return conversor.cupons(cupomRepository.list());
 	}
 	
+	public List<CupomDescontoResource> listarCuponsPorAdm(int idAdm){
+		return conversor.cupons(cupomRepository.listByAdm(idAdm));
+	}
+	
+	
 	public ResponseEntity<CupomDescontoResource> buscarCupomPorId(int id) throws  NotFoundException, ResourceExeption {
 		CupomDesconto byId = cupomRepository.getById(id);
 		if(byId==null) {

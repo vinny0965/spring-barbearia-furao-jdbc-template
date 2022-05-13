@@ -2,7 +2,11 @@ package br.com.barbeariaFuraoJDBC.resource.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import br.com.barbeariaFuraoJDBC.datasource.model.FluxoCaixa;
 
 public class FluxoCaixaResource implements Serializable{
 
@@ -11,24 +15,35 @@ public class FluxoCaixaResource implements Serializable{
 	 */
 	private static final long serialVersionUID = 600900485048408676L;
 
+	private int id;
+	@NotNull(message = "campo forma_pagamento requerido")
 	@JsonProperty("forma_pagamento")
 	private String formaPagamento;
+	@NotNull(message = "campo total_pagamento requerido")
 	@JsonProperty("total_pagamento")
 	private String totalPagamento;
-	@JsonProperty("id_caixa")
-	private String caixa;
+	
 	@JsonProperty("id_agendamento")
 	private String agendamento;
 	@JsonProperty("id_cupom")
 	private String cupomDesconto;
-	public FluxoCaixaResource(String formaPagamento, String totalPagamento, String caixa, String agendamento,
+	
+	public FluxoCaixaResource(String formaPagamento, String totalPagamento, String agendamento,
 			String cupomDesconto) {
 		super();
 		this.formaPagamento = formaPagamento;
 		this.totalPagamento = totalPagamento;
-		this.caixa = caixa;
 		this.agendamento = agendamento;
 		this.cupomDesconto = cupomDesconto;
+	}
+	
+	public FluxoCaixaResource(FluxoCaixa fluxoCaixa) {
+		super();
+		this.id = fluxoCaixa.getId();
+		this.formaPagamento = fluxoCaixa.getFormaPagamento();
+		this.totalPagamento = String.valueOf(fluxoCaixa.getTotalPagamento());
+		this.agendamento = String.valueOf(fluxoCaixa.getAgendamento().getId());
+		this.cupomDesconto = String.valueOf(fluxoCaixa.getCupomDesconto().getId());
 	}
 	public String getFormaPagamento() {
 		return formaPagamento;
@@ -42,12 +57,7 @@ public class FluxoCaixaResource implements Serializable{
 	public void setTotalPagamento(String totalPagamento) {
 		this.totalPagamento = totalPagamento;
 	}
-	public String getCaixa() {
-		return caixa;
-	}
-	public void setCaixa(String caixa) {
-		this.caixa = caixa;
-	}
+
 	public String getAgendamento() {
 		return agendamento;
 	}
@@ -60,8 +70,12 @@ public class FluxoCaixaResource implements Serializable{
 	public void setCupomDesconto(String cupomDesconto) {
 		this.cupomDesconto = cupomDesconto;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

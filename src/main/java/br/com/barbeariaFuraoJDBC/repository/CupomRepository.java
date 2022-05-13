@@ -54,6 +54,14 @@ public class CupomRepository {
 		return jdbcTemplate.query(sql, rowMapper);
 	}
 	
+	
+	public List<CupomDesconto>listByAdm(int idAdm){
+		String sql  = "select cd.id as cdid, codigo , valor , id_administrador , a.id as aid, a.cpf , a.data_nascimento ,"
+				+ " a.email ,a.login ,a.nome, a.senha ,a.sexo , a.telefone ,a.id_endereco, e.id as eid, e.bairro,e.cep ,"
+				+ "e.logradouro ,e.numero from cupons_desconto cd inner join administradores a on a.id = cd.id_administrador"
+				+ " inner join enderecos e on e.id  = a.id_endereco WHERE a.id=?";
+		return jdbcTemplate.query(sql, rowMapper,idAdm);
+	}
 	@SuppressWarnings("deprecation")
 	public CupomDesconto getById(int id) throws NotFoundException{
 		String sql  = "select cd.id as cdid, codigo , valor , id_administrador , a.id as aid, a.cpf , a.data_nascimento ,"

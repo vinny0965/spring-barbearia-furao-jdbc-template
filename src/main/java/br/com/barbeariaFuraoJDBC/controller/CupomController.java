@@ -38,6 +38,11 @@ public class CupomController {
 		return  buscarCupomServiceImpl.listarCupons();
 	}
 	
+	@GetMapping(path = "/cupom")
+	public List<CupomDescontoResource> listarCuponsPorAdm(@RequestParam(value = "idAdm",defaultValue = "0")int idAdm){
+		return  buscarCupomServiceImpl.listarCuponsPorAdm(idAdm);
+	}
+	
 	@GetMapping(path = "/cupom/id/{id}")
 	public ResponseEntity<CupomDescontoResource> busCupomDesconto(@PathVariable(name = "id",required = true)int id) throws NotFoundException, ResourceExeption {
 		return buscarCupomServiceImpl.buscarCupomPorId(id);

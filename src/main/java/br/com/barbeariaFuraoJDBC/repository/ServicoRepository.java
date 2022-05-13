@@ -69,6 +69,14 @@ public class ServicoRepository {
 		return servico;
 	}
 	
+	public List<Servico>listByAdministrador(int idAdm){
+		String sql = "select s.id as sid, tipo_servico , valor ,id_administrador, a.id as aid, a.cpf ,"
+				+ " a.data_nascimento , a.email , a.login , a.nome , a.senha , a.sexo , a.telefone , a.id_endereco,"
+				+ " e.id as eid,e.bairro,e.cep,e.logradouro ,e.numero from servicos s inner join administradores"
+				+ " a on a.id = s.id_administrador inner join enderecos e on e.id = a.id_endereco WHERE a.id=?";
+		return jdbcTemplate.query(sql, rowMapper,idAdm);
+	}
+	
 	@SuppressWarnings("deprecation")
 	public Servico getByTipo(String tipo) throws NotFoundException {
 		String sql = "select s.id as sid, tipo_servico , valor ,id_administrador, a.id as aid, a.cpf ,"
@@ -85,6 +93,7 @@ public class ServicoRepository {
 		}
 		return servico;
 	}
+	
 	
 	public int create(Servico servico) {
 		String sql = "INSERT INTO servicos (tipo_servico, valor, id_administrador)"
