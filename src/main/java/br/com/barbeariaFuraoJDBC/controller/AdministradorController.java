@@ -41,6 +41,10 @@ public class AdministradorController {
 	public AdministradorResource buscarAdministradorPorId(@PathVariable(name = "id",required = true)int id) throws  NotFoundException, ResourceExeption {
 		return buscarAdministradorServiceImpl.buscarAdministradorPorId(id);
 	}
+	@GetMapping(path = "/administrador/cpf/{cpf}")
+	public AdministradorResource buscarAdministradorPorId(@PathVariable(name = "cpf",required = true)String cpf) throws  NotFoundException, ResourceExeption {
+		return buscarAdministradorServiceImpl.buscarAdministradorPorCpf(cpf);
+	}
 	
 	@PostMapping(path = "/administrador/save")
 	public ResponseEntity<Administrador> cadastrarAdministrador(@Valid @RequestBody AdministradorResource administradorResource) throws  ResourceExeption, NotFoundException {

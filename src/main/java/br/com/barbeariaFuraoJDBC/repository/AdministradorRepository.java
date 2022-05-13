@@ -60,6 +60,20 @@ public class AdministradorRepository {
 		return administrador;
 	}
 	
+	@SuppressWarnings("deprecation")
+	public Administrador getByCpf(String cpf) throws NotFoundException {
+		String sql = ("select a.id as aid,cpf ,data_nascimento ,email , login ,nome ,senha ,sexo ,telefone, id_endereco ,e.id as eid, e.bairro ,e.cep ,e.logradouro,e.numero"
+				+ "  from administradores a inner join enderecos e on e.id = a.id_endereco WHERE cpf=?");
+		Administrador administrador = null;
+		try {
+			administrador = jdbcTemplate.queryForObject(sql, new Object[] {cpf},rowMapper);
+		} catch (DataAccessException e) {
+			// TODO: handle exception
+			throw new NotFoundException("Não foi possível encontrar o administrador pelo cpf: "+cpf);
+		}
+		return administrador;
+	}
+	
 	public int create (Administrador administrador) {
 		String sql = "INSERT INTO administradores (cpf, data_nascimento, email, "
 				+ "login,nome,senha,sexo,telefone,id_endereco) VALUES(?,?,?,?,?,?,?,?,?)";

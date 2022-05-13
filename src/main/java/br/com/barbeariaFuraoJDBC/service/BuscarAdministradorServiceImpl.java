@@ -31,6 +31,11 @@ public class BuscarAdministradorServiceImpl {
 		
 		
 	}
+	public AdministradorResource buscarAdministradorPorCpf(String cpf) throws  NotFoundException, ResourceExeption {
+		Administrador byId = administradorRepository.getByCpf(cpf);
+		return administradorConversor.conversor(byId);
+		
+	}
 	
 	public void deletarAdministrador(int id) throws NotFoundException {
 		if(administradorRepository.deleteById(id)==0) {
