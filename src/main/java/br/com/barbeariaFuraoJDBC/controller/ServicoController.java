@@ -60,8 +60,8 @@ public class ServicoController {
 	}
 	
 	@PutMapping(path = "/servico/update/id/{id}")
-	public void atualizarServico(@PathVariable(name = "id",required = true)int id, @RequestBody ServicoResource servicoResource) throws ResourceExeption, NotFoundException {
-		buscarServicoServiceImpl.atualizarServico(servicoResource, id);
+	public void atualizarServico(@PathVariable(name = "id",required = true)int id, @RequestBody ServicoResource servicoResource,@RequestParam(value = "idAdministrador", defaultValue = "0")int idAdm) throws ResourceExeption, NotFoundException {
+		buscarServicoServiceImpl.atualizarServico(servicoResource, id,idAdm);
 	}
 	
 	@PostMapping(path = "/servico/save")

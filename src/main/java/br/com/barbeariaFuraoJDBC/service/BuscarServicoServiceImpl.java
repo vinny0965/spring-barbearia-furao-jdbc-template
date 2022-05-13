@@ -54,8 +54,8 @@ public class BuscarServicoServiceImpl {
 		}
 	}
 	
-	public void atualizarServico(ServicoResource servicoResource, int id) throws ResourceExeption, NotFoundException {
-		Servico conversor = servicoConversor.conversor(servicoResource, id);
+	public void atualizarServico(ServicoResource servicoResource, int id,int idAdministrador) throws ResourceExeption, NotFoundException {
+		Servico conversor = servicoConversor.conversor(servicoResource, idAdministrador);
 		if(servicoRepository.updateById(conversor, id)==0) {
 			throw new NotFoundException("não foi possível atualizar o serviço, id inválido");
 		}
