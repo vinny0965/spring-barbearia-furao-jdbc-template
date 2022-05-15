@@ -41,6 +41,14 @@ public class BuscarCupomServiceImpl {
 		}
 	}
 	
+	public ResponseEntity<CupomDescontoResource> buscarCupomPorCodigo(String codigo) throws  NotFoundException, ResourceExeption {
+		CupomDesconto byCodigo = cupomRepository.getByCodigo(codigo);
+		if(byCodigo==null) {
+			throw new NotFoundException("cupom de desconto não encontrado");
+		}else {
+			return ResponseEntity.ok(conversor.conversor(byCodigo));
+		}
+	}
 	
 	public ResponseEntity<Void> deletarCupomPorId(int id) throws  NotFoundException {
 		int deleteById = cupomRepository.deleteById(id);

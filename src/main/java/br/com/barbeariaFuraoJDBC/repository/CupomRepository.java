@@ -79,6 +79,23 @@ public class CupomRepository {
 		return cupom;
 	}
 	
+	@SuppressWarnings("deprecation")
+	public CupomDesconto getByCodigo(String codigo) throws NotFoundException{
+		String sql  = "select cd.id as cdid, codigo , valor , id_administrador , a.id as aid, a.cpf , a.data_nascimento ,"
+				+ " a.email ,a.login ,a.nome, a.senha ,a.sexo , a.telefone ,a.id_endereco, e.id as eid, e.bairro,e.cep ,"
+				+ "e.logradouro ,e.numero from cupons_desconto cd inner join administradores a on a.id = cd.id_administrador"
+				+ " inner join enderecos e on e.id  = a.id_endereco WHERE codigo=?";
+		CupomDesconto cupom = null;
+		try {
+			cupom= jdbcTemplate.queryForObject(sql, new Object[] {codigo}, rowMapper);
+		} catch (DataAccessException e) {
+			// TODO: handle exception
+			throw new NotFoundException("CUPOM INVÁLIDO");
+		}
+		
+		return cupom;
+	}
+	
 	public int create(CupomDesconto cupomDesconto) {
 		String sql = "insert into cupons_desconto (codigo,valor,id_administrador) values (?,?,?)";
 		return jdbcTemplate.update(sql,cupomDesconto.getCodigo(),cupomDesconto.getValor(),cupomDesconto.getAdministrador().getId());
