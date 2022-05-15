@@ -1,5 +1,6 @@
 package br.com.barbeariaFuraoJDBC.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,11 @@ public class BuscarAgendamentoServiceImpl {
 		return conversor.conversor(agendamentoRepository.listByCliente(id));
 	}
 	
+	public List<AgendamentoResource> listarAgendamentosPorData(String data) throws ResourceExeption{
+		
+		return conversor.conversor(agendamentoRepository.listByData(convert(data)));
+	}
+	
 	public ResponseEntity<AgendamentoResource> buscarAgendamento(int id) throws NotFoundException, ResourceExeption {
 		Agendamento agendamento = agendamentoRepository.findById(id);
 		if(agendamento == null) {
@@ -38,6 +44,10 @@ public class BuscarAgendamentoServiceImpl {
 		}else {
 			return ResponseEntity.ok(conversor.conversor(agendamento));
 		}
+	}
+	
+	private LocalDate convert (String data) {
+		return LocalDate.parse(data);
 	}
 	
 //	public ResponseEntity<Void> atualizarAgendamento(AgendamentoResource agendamentoResource, int id) throws ResourceExeption {

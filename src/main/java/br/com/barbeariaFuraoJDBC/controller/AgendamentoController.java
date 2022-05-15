@@ -1,5 +1,6 @@
 package br.com.barbeariaFuraoJDBC.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,10 @@ public class AgendamentoController {
 	@GetMapping(path = "/agendamento")
 	public List<AgendamentoResource> listarAgendamentosPorCliente(@RequestParam(value = "cliente",defaultValue = "0")int id) throws ResourceExeption{
 		return buscarAgendamentoServiceImpl.listarAgendamentosPorId(id);
+	}
+	@GetMapping(path = "/agendamento/data")
+	public List<AgendamentoResource> listarAgendamentosPorData(@RequestParam(value = "data",defaultValue = "0")String data) throws ResourceExeption{
+		return buscarAgendamentoServiceImpl.listarAgendamentosPorData(data);
 	}
 	
 	@GetMapping(path = "/agendamento/id/{id}")
