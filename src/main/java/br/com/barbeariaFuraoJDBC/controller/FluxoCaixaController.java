@@ -44,8 +44,8 @@ public class FluxoCaixaController {
 	}
 	
 	@PostMapping(path = "/fluxos-caixa/create")
-	public ResponseEntity<FluxoCaixaResource> create(@Valid @RequestBody FluxoCaixaResource fluxoCaixaResource,@RequestParam(value = "idAgendamento",defaultValue = "0")int idAgendamento,@RequestParam(value = "idCupom",defaultValue = "0")int idCupom) throws ResourceExeption, NotFoundException {
-		return cadastrarFluxoCaixaServiceImpl.cadastar(fluxoCaixaResource,idAgendamento,idCupom);
+	public void create(@Valid @RequestBody FluxoCaixaResource fluxoCaixaResource,@RequestParam(value = "idAgendamento",defaultValue = "0")int idAgendamento,@RequestParam(value = "idCupom",defaultValue = "0")int idCupom) throws ResourceExeption, NotFoundException {
+		cadastrarFluxoCaixaServiceImpl.cadastar(fluxoCaixaResource,idAgendamento,idCupom);
 	}
 
 	@PutMapping(path = "/fluxos-caixa/update/id/{id}")

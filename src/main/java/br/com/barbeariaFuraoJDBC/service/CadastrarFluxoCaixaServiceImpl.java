@@ -25,13 +25,13 @@ public class CadastrarFluxoCaixaServiceImpl {
 	private FluxoCaixaConversor fluxoCaixaConversor;
 	
 	
-	public ResponseEntity<FluxoCaixaResource> cadastar(FluxoCaixaResource fluxoCaixaResource,int idAgendamento,int idCupom) throws ResourceExeption, NotFoundException {
+	public void cadastar(FluxoCaixaResource fluxoCaixaResource,int idAgendamento,int idCupom) throws ResourceExeption, NotFoundException {
 		FluxoCaixa conversor = fluxoCaixaConversor.conversor(fluxoCaixaResource,idAgendamento,idCupom);
 		int create = fluxoCaixaRepository.create(conversor);
 		if(create == 0) {
 			throw new ResourceExeption("não foi possível criar um fluxo de caixa, resouce: "+fluxoCaixaResource);
 		}else {
-			return new ResponseEntity<>(fluxoCaixaConversor.conversor(conversor),HttpStatus.CREATED);
+			
 		}
 	}
 	

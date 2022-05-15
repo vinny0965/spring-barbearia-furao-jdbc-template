@@ -16,7 +16,7 @@ public class FluxoCaixaResource implements Serializable{
 	private static final long serialVersionUID = 600900485048408676L;
 
 	@JsonProperty("id")
-	private int id;
+	private String id;
 	@NotNull(message = "campo forma_pagamento requerido")
 	@JsonProperty("forma_pagamento")
 	private String formaPagamento;
@@ -40,7 +40,7 @@ public class FluxoCaixaResource implements Serializable{
 	
 	public FluxoCaixaResource(FluxoCaixa fluxoCaixa) {
 		super();
-		this.id = fluxoCaixa.getId();
+		this.id = String.valueOf(fluxoCaixa.getId());
 		this.formaPagamento = fluxoCaixa.getFormaPagamento();
 		this.totalPagamento = String.valueOf(fluxoCaixa.getTotalPagamento());
 		this.agendamento = String.valueOf(fluxoCaixa.getAgendamento().getId());
@@ -72,10 +72,10 @@ public class FluxoCaixaResource implements Serializable{
 		this.cupomDesconto = cupomDesconto;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
