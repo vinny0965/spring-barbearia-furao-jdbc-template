@@ -15,6 +15,7 @@ public class FluxoCaixaResource implements Serializable{
 	 */
 	private static final long serialVersionUID = 600900485048408676L;
 
+	@JsonProperty("id")
 	private int id;
 	@NotNull(message = "campo forma_pagamento requerido")
 	@JsonProperty("forma_pagamento")
