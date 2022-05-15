@@ -41,11 +41,11 @@ public class AgendamentoController {
 		return buscarAgendamentoServiceImpl.listarAgendamentosPorId(id);
 	}
 	
-//	@GetMapping(path = "/agendamento/id/{id}")
-//	public Agendamento buscarAgendamentoPorId(@PathVariable(name = "id",required = true)int id) throws NotFoundException {
-//		return buscarAgendamentoServiceImpl.buscarAgendamento(id);
-//	}
-//	
+	@GetMapping(path = "/agendamento/id/{id}")
+	public ResponseEntity<AgendamentoResource> buscarAgendamentoPorId(@PathVariable(name = "id",required = true)int id) throws NotFoundException, ResourceExeption {
+		return buscarAgendamentoServiceImpl.buscarAgendamento(id);
+	}
+	
 	@PostMapping(path = "/agendamento/save")
 	public ResponseEntity<Agendamento> CadastrarAgendamento(@RequestBody AgendamentoResource agendamentoResource,@RequestParam(value = "idCliente",defaultValue = "0")int idClinte,@RequestParam(value = "idServico",defaultValue = "0")int idServico) throws ResourceExeption, NotFoundException {
 		return cadastrarAgendamentoServiceImpl.cadastrarAgendamento(agendamentoResource,idClinte,idServico);

@@ -31,15 +31,15 @@ public class BuscarAgendamentoServiceImpl {
 		return conversor.conversor(agendamentoRepository.listByCliente(id));
 	}
 	
-//	public Agendamento buscarAgendamento(int id) throws NotFoundException {
-//		Agendamento byId = AgendamentoDao.getById(id);
-//		if(byId == null) {
-//			throw new NotFoundException("agendamento não encontrado"); 
-//		}else {
-//			return byId;
-//		}
-//	}
-//	
+	public ResponseEntity<AgendamentoResource> buscarAgendamento(int id) throws NotFoundException, ResourceExeption {
+		Agendamento agendamento = agendamentoRepository.findById(id);
+		if(agendamento == null) {
+			throw new NotFoundException("agendamento não encontrado"); 
+		}else {
+			return ResponseEntity.ok(conversor.conversor(agendamento));
+		}
+	}
+	
 //	public ResponseEntity<Void> atualizarAgendamento(AgendamentoResource agendamentoResource, int id) throws ResourceExeption {
 //		boolean updateById = AgendamentoDao.updateById(agendamentoResource, id);
 //		if(updateById == false) {
