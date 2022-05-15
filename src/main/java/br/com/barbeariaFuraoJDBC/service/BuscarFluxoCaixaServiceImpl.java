@@ -23,10 +23,13 @@ public class BuscarFluxoCaixaServiceImpl {
 	@Autowired
 	private FluxoCaixaConversor conversor;
 	
-	public List<FluxoCaixa> listarFluxosCaixa(){
-		return fluxoCaixaRepository.list();
+//	public List<FluxoCaixa> listarFluxosCaixa(){
+//		return fluxoCaixaRepository.list();
+//	}
+//	
+	public List<FluxoCaixaResource> listarFluxosCaixa() throws ResourceExeption{
+		return conversor.conversor(fluxoCaixaRepository.list());
 	}
-	
 	public FluxoCaixaResource buscarFluxoCaixaPorId(int id) throws NotFoundException, ResourceExeption {
 		FluxoCaixa byId = fluxoCaixaRepository.buscarPorId(id);
 		if(byId == null) {

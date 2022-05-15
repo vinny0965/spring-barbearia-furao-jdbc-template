@@ -1,5 +1,9 @@
 package br.com.barbeariaFuraoJDBC.conversor;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -38,6 +42,20 @@ public class FluxoCaixaConversor {
 		}
 	}
 
+	public List<FluxoCaixaResource> conversor(List<FluxoCaixa>caixas) throws ResourceExeption{
+		List<FluxoCaixaResource>caixaResources = new ArrayList<>();
+		try {
+			for (FluxoCaixa fluxoCaixa : caixas) {
+				FluxoCaixaResource caixaResource = new FluxoCaixaResource(fluxoCaixa);
+				caixaResources.add(caixaResource);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new ResourceExeption("não foi possível converter a entidade para resouce");
+
+		}
+		return caixaResources;
+	}
 	
 	public FluxoCaixaResource conversor(FluxoCaixa fluxoCaixa) throws ResourceExeption {
 		try {

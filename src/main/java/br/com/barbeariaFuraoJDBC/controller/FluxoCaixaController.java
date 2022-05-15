@@ -34,7 +34,7 @@ public class FluxoCaixaController {
 	private CadastrarFluxoCaixaServiceImpl cadastrarFluxoCaixaServiceImpl;
 	
 	@GetMapping(path = "/fluxos-caixa")
-	public List<FluxoCaixa> listarFluxoxCaixa(){
+	public List<FluxoCaixaResource> listarFluxoxCaixa() throws ResourceExeption{
 		return buscarFluxoCaixaServiceImpl.listarFluxosCaixa();
 	}
 	
