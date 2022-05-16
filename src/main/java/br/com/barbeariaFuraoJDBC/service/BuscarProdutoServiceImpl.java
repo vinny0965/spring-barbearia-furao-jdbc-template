@@ -30,5 +30,10 @@ public class BuscarProdutoServiceImpl {
 		Produto buscarPorId = produtoRepository.buscarPorId(id);
 		return produtoConversor.conversor(buscarPorId);
 	}
+	
+	public void cadastrarProduto(ProdutoResource produtoResource) throws ResourceExeption {
+		produtoRepository.create(produtoConversor.conversor(produtoResource));
+	
+	}
 
 }

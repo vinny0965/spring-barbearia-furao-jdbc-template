@@ -46,6 +46,10 @@ public class ProdutoRepository {
 		return produto;
 	}
 	
+	public int create(Produto produto) {
+		String sql = "INSERT into produtos (codigo_barras,descricao,validade,valor) VALUES (?,?,?,?)";
+		return jdbcTemplate.update(sql, produto.getCodigoBarras(), produto.getDescricao(),produto.getValidade(),produto.getValor());
+	}
 	
 	
 

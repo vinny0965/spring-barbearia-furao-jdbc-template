@@ -2,6 +2,8 @@ package br.com.barbeariaFuraoJDBC.resource.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -17,15 +19,20 @@ public class ProdutoResource implements Serializable {
 	@JsonProperty("id")
 	private String id;
 	
+	@NotNull(message = "campo código barras requerido")
 	@JsonProperty("codigo_barras")
 	private String codigoBarras;
 	
+	@NotNull(message = "campo descricao barras requerido")
 	@JsonProperty("descricao")
 	private String descricao;
 	
+	
+	@NotNull(message = "campo validade barras requerido")
 	@JsonProperty("validade")
 	private String validade;
 	
+	@NotNull(message = "campo valor barras requerido")
 	@JsonProperty("valor")
 	private String valor;
 

@@ -1,5 +1,6 @@
 package br.com.barbeariaFuraoJDBC.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,7 @@ public class AdministradorRepository {
 		}
 		return administrador;
 	}
+	
 	
 	public int create (Administrador administrador) {
 		String sql = "INSERT INTO administradores (cpf, data_nascimento, email, "

@@ -37,4 +37,9 @@ public class EstoqueRepository {
 		return jdbcTemplate.query(sql, rowMapper);
 	}
 	
+	public int create(Estoque estoque) {
+		String sql = "INSERT into estoques(lote,quantidade,id_produto) VALUES (?,?,?)";
+		return jdbcTemplate.update(sql, estoque.getLote(),estoque.getQuantidade(),estoque.getProduto().getId());
+	}
+	
 }
