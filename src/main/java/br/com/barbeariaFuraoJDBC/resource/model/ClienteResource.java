@@ -109,4 +109,10 @@ public class ClienteResource {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return "ClienteResource [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", sexo=" + sexo
+				+ ", telefone=" + telefone + ", dataNascimento=" + dataNascimento + ", idEndereco=" + idEndereco + "]";
+	}
+ 
 }
